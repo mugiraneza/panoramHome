@@ -48,8 +48,8 @@ class Propertie(models.Model):
     garage = models.IntegerField(default=0)
     cost = models.IntegerField(default=0)
     room = models.IntegerField(default=0)
-    type = models.CharField(default="home", choices=PROPERTIES_TYPE_CHOICES)
-    status = models.CharField(default="for sale", choices=PROPERTIES_STATUS_CHOISES)
+    type = models.CharField(default="home", max_length=250, choices=PROPERTIES_TYPE_CHOICES)
+    status = models.CharField(default="for sale", max_length=250, choices=PROPERTIES_STATUS_CHOISES)
     airCond = models.BooleanField(default=False)
     balcony = models.BooleanField(default=False)
     internet = models.BooleanField(default=False)
@@ -86,6 +86,6 @@ class ImageProperty(models.Model):
 
 
 class PlanProperty(models.Model):
-    property = models.ForeignKey(Propertie, related_name="imageProperty", on_delete=models.CASCADE)
+    property = models.ForeignKey(Propertie, related_name="planProperty", on_delete=models.CASCADE)
     plan = models.ImageField(upload_to="propertyPlan")
     floorNum = models.IntegerField()
