@@ -7,7 +7,36 @@ PROPERTIES_STATUS_CHOISES = [
     ('for rent', 'For rent'),
 ]
 PROPERTIES_TYPE_CHOICES = [
-    ('home', 'Home'),
+    ('Appartement', 'Appartement'),
+    ('Appartement Duplex', 'Duplex'),
+    ('Appartement Triplex', 'Triplex'),
+    ('Appartement Souplex', 'Souplex'),
+    ('Maison', 'Maison***'),
+    ('Maison à étages', 'Maison à étages'),
+    ('Maison à toit plat', 'Maison à toit plat'),
+    ('Maison bioclimatique', 'Maison bioclimatique'),
+    ('Maison d’architecte', 'Maison d’architecte'),
+    ('Maison duplex', 'Maison duplex'),
+    ('Maison en bois', 'Maison en bois'),
+    ('Maison en lotissement', 'Maison en lotissement'),
+    ('Maison en pierre', 'Maison en pierre'),
+    ('Maison en VEFA', 'Maison en VEFA'),
+    ('Maison évolutive', 'Maison évolutive'),
+    ('Maison individuelle', 'Maison individuelle'),
+    ('Maison insolite', 'Maison insolite'),
+    ('Maison coloniale', 'Maison coloniale'),
+    ('Maison jumelée', 'Maison jumelée'),
+    ('Maison loft', 'Maison loft'),
+    ('Maisons longères', 'Maisons longères'),
+    ('Maison low cost', 'Maison low cost'),
+    ('Maison meulière', 'Maison meulière'),
+    ('Maison niveaux', 'Maison niveaux'),
+    ('Maison Phénix', 'Maison Phénix'),
+    ('Maison préfabriquée', 'Maison préfabriquée'),
+    ('Maison prête à finir', 'Maison prête à finir'),
+    ('Maison plain-pied', 'Maison plain-pied'),
+    ('Mas de Provence', 'Mas de Provence'),
+    ('Résidence séniors', 'Résidence séniors'),
 ]
 
 
@@ -38,17 +67,17 @@ class City(models.Model):
 
 
 class Propertie(models.Model):
-    city = models.ForeignKey(City, related_name='propertie', on_delete=models.CASCADE)
-    address = models.CharField(max_length=250)
+    city = models.ForeignKey(City, related_name='propertie', on_delete=models.CASCADE, null=False, blank=False)
+    address = models.CharField(max_length=250, null=False, blank=False)
     name = models.CharField(max_length=250, default="Real House Luxury Villa")
-    description = models.TextField(max_length=300)
+    description = models.TextField(max_length=300, null=False, blank=False)
     bedroom = models.IntegerField(default=0)
     bathroom = models.IntegerField(default=0)
     surface = models.IntegerField(default=0)
     garage = models.IntegerField(default=0)
     cost = models.IntegerField(default=0)
     room = models.IntegerField(default=0)
-    type = models.CharField(default="home", max_length=250, choices=PROPERTIES_TYPE_CHOICES)
+    type = models.CharField(default="Maison", max_length=250, choices=PROPERTIES_TYPE_CHOICES)
     status = models.CharField(default="for sale", max_length=250, choices=PROPERTIES_STATUS_CHOISES)
     airCond = models.BooleanField(default=False)
     balcony = models.BooleanField(default=False)

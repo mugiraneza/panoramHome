@@ -86,7 +86,8 @@ class PropertieViewSet(views.APIView):
         return Response(PropertieSerializer(property_list, many=True).data)
 
     def post(self, request, **kwargs):
-        serializer = CountrySerializer(request.data, many=True)
+        print(request.data)
+        serializer = CountrySerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

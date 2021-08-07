@@ -9,6 +9,6 @@ router.register(r'state', views.StateViewSet)
 router.register(r'city', views.CityViewSet)
 router.register(r'country', views.CountryViewSet)
 urlpatterns = [
-    # url(r'^country/?$', views.CountryViewSet.as_view(), name='country_list_view'),
+    url(r'^property/?$', views.PropertieViewSet.as_view(), name='property_view'),
     url('', include(router.urls)),
 ]
