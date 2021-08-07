@@ -77,17 +77,19 @@ class CityViewSet(viewsets.ModelViewSet):
 
 class PropertieViewSet(views.APIView):
 
-    def get(self, request, **kwargs):
-        pk = kwargs.get('id', None)
+    def get(self, request, *args, **kwargs):
+        pk = request.GET.get('id', None)
         if pk:
             property_list = get_object_or_404(Propertie, pk=pk)
+            many = False
         else:
             property_list = Propertie.objects.all()
-        return Response(PropertieSerializer(property_list, many=True).data)
+            many = True
+        serialised_data = PropertieSerializer(property_list, many=many)
+        return Response(serialised_data.data, status=status.HTTP_200_OK)
 
     def post(self, request, **kwargs):
-        print(request.data)
-        serializer = CountrySerializer(data=request.data)
+        serializer = PropertieSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -95,14 +97,20 @@ class PropertieViewSet(views.APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, **kwargs):
-        pk = kwargs.get('pk', None)
-        print(kwargs.get('pk', None))
-        print(pk)
-        # if pk:
-        #     country_list = get_object_or_404(Country, pk=pk)
-        # else:
-        #     return Response()
-        # return Response(CountrySerializer(country_list, many=True).data)
+        if "id" in request.data.keys():
+            serialized_data = PropertieSerializer(data=request.data)
+            if not serialized_data.is_valid():
+                return Response(serialized_data.errors, status=status.HTTP_400_BAD_REQUEST)
+            else:
+                return Response(serialized_data.data, status=status.HTTP_200_OK)
+        else:
+            return Response({"provide id for update"}, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk=None, **kwargs):
-        pass
+        pk = request.GET.get('id', None)
+        if pk:
+            property_list = get_object_or_404(Propertie, pk=pk)
+            property_list.delete()
+            return Response({"Propertie successfully deleted!!!"}, status=status.HTTP_200_OK)
+        else:
+            return Response({"Id should be provided"}, status=status.HTTP_400_BAD_REQUEST)

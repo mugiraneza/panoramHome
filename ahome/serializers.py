@@ -37,5 +37,6 @@ class StateSerializer(serializers.ModelSerializer):
 class PropertieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Propertie
-        fields = '__all__'
-
+        fields = ["id", "address", "name", "description", "bedroom", "surface", "garage", "cost", "room", "type",
+                  "status", "airCond", "balcony", "internet", "dishwasher", "bedding", "cableTV", "parking", "pool",
+                  "fridge", "video", "localisation", "city"]
