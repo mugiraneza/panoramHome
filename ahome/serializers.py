@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 
-from ahome.models import Country
+from ahome.models import Country, City, State, Propertie
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -16,8 +16,26 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['url', 'name']
 
 
-class CountrySerializer(serializers.HyperlinkedModelSerializer):
+class CountrySerializer(serializers.ModelSerializer):
     class Meta:
         model = Country
-        fields = ['name', 'description']
+        fields = '__all__'
+
+
+class CitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = City
+        fields = '__all__'
+
+
+class StateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = State
+        fields = '__all__'
+
+
+class PropertieSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Propertie
+        fields = '__all__'
 
