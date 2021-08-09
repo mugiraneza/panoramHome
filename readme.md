@@ -19,7 +19,7 @@ Cloner le repository git sur votre machine
 - Installer les requirements et les dépendances
 
 ```
-    pip install requirements.txt
+    pip install -r requirements.txt
 ```
 
 - Lancer la migration de votre base de donnée
