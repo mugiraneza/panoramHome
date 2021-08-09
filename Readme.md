@@ -41,6 +41,13 @@ Cloner le repository git sur votre machine
 ```
    cd frontend
 ```
+
+Installez le package React JS
+```
+   npm install
+   npm audit fix
+```
+
 Demarrez React JS
 ```
    npm start
