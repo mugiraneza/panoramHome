@@ -61,6 +61,11 @@ class City(models.Model):
     state = models.ForeignKey(State, related_name='city', on_delete=models.CASCADE)
     name = models.CharField(max_length=50, unique=True)
     description = models.TextField(max_length=300)
+    photo = models.ImageField(
+        upload_to='city_photo',
+        null=True,
+        validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png', 'gif'])]
+    )
 
     def __str__(self):
         return self.name
@@ -88,6 +93,7 @@ class Propertie(models.Model):
     parking = models.BooleanField(default=False)
     pool = models.BooleanField(default=False)
     fridge = models.BooleanField(default=False)
+    featured = models.BooleanField(default=False)
     video = models.FileField(
         upload_to='videos_uploaded',
         null=True,

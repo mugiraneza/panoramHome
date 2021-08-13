@@ -11,7 +11,6 @@ export default function api_interface(url, data = {}, type = "GET") {
                 params: data,
                 headers: API_HEADERS
             });
-            console.log("GET", url, promise)
             promise.then(response => {
                 resolve(response)
             }).catch(error => {

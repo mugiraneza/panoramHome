@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import HeaderParalax from "../../components/headerParalax/HeaderParalax";
 import SearchParalax from "../../components/searchParalax/SearchParalax";
 import PopularPlace from "../../components/popularPlace/PopularPlace";
+import PropertyForSale from "../../components/propertiesForSale/PropertyForSale";
 
 class MainNavRouter extends Component {
     render() {
@@ -16,6 +17,8 @@ class MainNavRouter extends Component {
                     </SearchParalax>
                     <PopularPlace>
                     </PopularPlace>
+                    <PropertyForSale>
+                    </PropertyForSale>
                 </div>
             </>
         );

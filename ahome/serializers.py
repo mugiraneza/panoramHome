@@ -1,3 +1,4 @@
+import city as city
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 
@@ -23,9 +24,14 @@ class CountrySerializer(serializers.ModelSerializer):
 
 
 class CitySerializer(serializers.ModelSerializer):
+    count_properties = serializers.SerializerMethodField("count_property")
+
+    def count_property(self, city):
+        return city.propertie.count()
+
     class Meta:
         model = City
-        fields = '__all__'
+        fields = ["id", "name", "description", "count_properties", "photo"]
 
 
 class StateSerializer(serializers.ModelSerializer):
