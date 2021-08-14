@@ -1,4 +1,5 @@
-import city as city
+from datetime import datetime, timezone
+
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 
@@ -41,8 +42,15 @@ class StateSerializer(serializers.ModelSerializer):
 
 
 class PropertieSerializer(serializers.ModelSerializer):
+    create_since_day = serializers.SerializerMethodField("create_since", read_only=True)
+    created_at = serializers.DateTimeField(read_only=True)
+
+    def create_since(self, property):
+        difference = datetime.now(timezone.utc) - property.created_at
+        return difference.days
+
     class Meta:
         model = Propertie
         fields = ["id", "address", "name", "description", "bedroom", "surface", "garage", "cost", "room", "type",
                   "status", "airCond", "balcony", "internet", "dishwasher", "bedding", "cableTV", "parking", "pool",
-                  "fridge", "video", "localisation", "city"]
+                  "fridge", "video", "localisation", "city", "created_at", "create_since_day"]

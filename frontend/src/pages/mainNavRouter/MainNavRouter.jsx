@@ -3,6 +3,7 @@ import HeaderParalax from "../../components/headerParalax/HeaderParalax";
 import SearchParalax from "../../components/searchParalax/SearchParalax";
 import PopularPlace from "../../components/popularPlace/PopularPlace";
 import PropertyForSale from "../../components/propertiesForSale/PropertyForSale";
+import WhyChooseUs from "../../components/whyChooseUs/WhyChooseUs";
 
 class MainNavRouter extends Component {
     render() {
@@ -17,8 +18,12 @@ class MainNavRouter extends Component {
                     </SearchParalax>
                     <PopularPlace>
                     </PopularPlace>
-                    <PropertyForSale>
+                    <PropertyForSale type="For Sale">
                     </PropertyForSale>
+                    <PropertyForSale type="For Rent">
+                    </PropertyForSale>
+                    <WhyChooseUs>
+                    </WhyChooseUs>
                 </div>
             </>
         );
