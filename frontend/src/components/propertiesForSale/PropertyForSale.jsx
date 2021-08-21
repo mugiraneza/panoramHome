@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {reqGetPropertiesForSales} from "../../api/url";
 import Slider from "react-slick";
 import "./PropertyForSale.css"
+import {Link} from "react-router-dom";
 
 class PropertyForSale extends Component {
     constructor(props) {
@@ -31,7 +32,7 @@ class PropertyForSale extends Component {
                         <div className="project-single">
                             <div className="project-inner project-head">
                                 <div className="homes">
-                                    <a href="single-property-1.html" className="homes-img">
+                                    <Link to="/single-property" className="homes-img">
                                         <div
                                             className="homes-tag button alt featured">Featured
                                         </div>
@@ -40,32 +41,33 @@ class PropertyForSale extends Component {
                                         <div className="homes-price">{property.cost}</div>
                                         <img src="images/blog/b-11.jpg" alt="home-1"
                                              className="img-responsive"/>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div className="button-effect">
-                                    <a href="single-property-1.html" className="btn">
+                                    <Link to="/single-property" className="btn">
                                         <i className="fa fa-link">
                                         </i>
-                                    </a>
+                                    </Link>
                                     <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
                                        className="btn popup-video popup-youtube">
                                         <i className="fas fa-video">
                                         </i>
                                     </a>
-                                    <a href="single-property-2.html"
+                                    <Link to="/single-property-2.html"
                                        className="img-poppu btn">
                                         <i className="fa fa-photo">
                                         </i>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="homes-content">
-                                <h3><a href="single-property-1.html">{property.name}</a>
+                                <h3>
+                                    <Link to="single-property">{property.name}</Link>
                                 </h3>
                                 <p className="homes-address mb-3">
-                                    <a href="single-property-1.html">
+                                    <Link to="/single-property">
                                         <i className="fa fa-map-marker"></i><span>{property.address}</span>
-                                    </a>
+                                    </Link>
                                 </p>
                                 <ul className="homes-list clearfix">
                                     <li>
