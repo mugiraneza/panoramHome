@@ -85,7 +85,7 @@ class PropertieViewSet(views.APIView):
         else:
             property_list = Propertie.objects.all()
             many = True
-        serialised_data = PropertieSerializer(property_list, many=many)
+        serialised_data = PropertieSerializer(property_list, many=many, context={"request": request})
         return Response(serialised_data.data, status=status.HTTP_200_OK)
 
     def post(self, request, **kwargs):
@@ -98,10 +98,14 @@ class PropertieViewSet(views.APIView):
 
     def put(self, request, **kwargs):
         if "id" in request.data.keys():
-            serialized_data = PropertieSerializer(data=request.data)
+            id_property = request.GET.get("id", None)
+            instance = get_object_or_404(Propertie, id=id_property)
+            serialized_data = PropertieSerializer(data=request.data, instance=instance, partial=True,
+                                                  context={"request": request, "instance": instance})
             if not serialized_data.is_valid():
                 return Response(serialized_data.errors, status=status.HTTP_400_BAD_REQUEST)
             else:
+                serialized_data.save()
                 return Response(serialized_data.data, status=status.HTTP_200_OK)
         else:
             return Response({"provide id for update"}, status=status.HTTP_400_BAD_REQUEST)

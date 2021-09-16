@@ -5,6 +5,7 @@ import PopularPlace from "../../components/popularPlace/PopularPlace";
 import PropertyForSale from "../../components/propertiesForSale/PropertyForSale";
 import WhyChooseUs from "../../components/whyChooseUs/WhyChooseUs";
 
+import "./MainNavRouter.css"
 class MainNavRouter extends Component {
     render() {
         return (

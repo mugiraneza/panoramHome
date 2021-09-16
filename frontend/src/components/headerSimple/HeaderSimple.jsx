@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import {AiOutlineGlobal, AiOutlineLaptop} from "react-icons/ai";
 
-class HeaderSimple extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+class HeaderSimple extends Component {
+    // constructor(props) {
+    //     super(props);
+    // }
 
     render() {
         return (

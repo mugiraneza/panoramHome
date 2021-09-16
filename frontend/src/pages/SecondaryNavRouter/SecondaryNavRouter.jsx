@@ -12,7 +12,7 @@ class SecondaryNavRouter extends Component {
                     </HeaderSimple>
                     <div className="clearfix">
                     </div>
-                    <SingleProperty>
+                    <SingleProperty id={this.props.match.params.id}>
                     </SingleProperty>
                 </div>
             </>

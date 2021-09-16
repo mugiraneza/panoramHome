@@ -1,10 +1,13 @@
+from datetime import datetime, timezone
+
+
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils import timezone
 
 PROPERTIES_STATUS_CHOISES = [
-    ('for sale', 'For Sale'),
-    ('for rent', 'For rent'),
+    ('for sale', 'for Sale'),
+    ('for rent', 'for rent'),
 ]
 PROPERTIES_TYPE_CHOICES = [
     ('Appartement', 'Appartement'),
@@ -72,7 +75,7 @@ class City(models.Model):
 
 
 class Propertie(models.Model):
-    city = models.ForeignKey(City, related_name='propertie', on_delete=models.CASCADE, null=False, blank=False)
+    city = models.ForeignKey(City, related_name='propertie', on_delete=models.CASCADE, null=True, blank=True)
     address = models.CharField(max_length=250, null=False, blank=False)
     name = models.CharField(max_length=250, default="Real House Luxury Villa")
     description = models.TextField(max_length=300, null=False, blank=False)
@@ -103,8 +106,18 @@ class Propertie(models.Model):
     created_at = models.DateTimeField(editable=False)
     modified_at = models.DateTimeField()
 
-    ''' On save, update timestamps '''
+    presentation_image = models.ImageField(
+        upload_to='property_photo',
+        null=True,
+        validators=[FileExtensionValidator(allowed_extensions=['jpeg','jpg', 'png', 'gif'])]
+    )
 
+    @property
+    def create_since(self):
+        difference = datetime.now(timezone.utc) - self.created_at
+        return difference.days
+
+    ''' On save, update timestamps '''
     def save(self, *args, **kwargs):
         if not self.id:
             self.created_at = timezone.now()

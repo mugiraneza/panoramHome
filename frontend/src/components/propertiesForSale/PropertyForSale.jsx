@@ -3,6 +3,7 @@ import {reqGetPropertiesForSales} from "../../api/url";
 import Slider from "react-slick";
 import "./PropertyForSale.css"
 import {Link} from "react-router-dom";
+import {FaCalendar, FaLink, FaMapMarker, FaVideo, FaImage} from "react-icons/all";
 
 class PropertyForSale extends Component {
     constructor(props) {
@@ -32,41 +33,41 @@ class PropertyForSale extends Component {
                         <div className="project-single">
                             <div className="project-inner project-head">
                                 <div className="homes">
-                                    <Link to="/single-property" className="homes-img">
+                                    <Link to={"/single-property/" + property.id} className="homes-img">
                                         <div
                                             className="homes-tag button alt featured">Featured
                                         </div>
                                         <div
                                             className="homes-tag button alt sale">{property.status}</div>
                                         <div className="homes-price">{property.cost}</div>
-                                        <img src="images/blog/b-11.jpg" alt="home-1"
+                                        <img src={property.presentation_image} alt={property.name}
                                              className="img-responsive"/>
                                     </Link>
                                 </div>
                                 <div className="button-effect">
-                                    <Link to="/single-property" className="btn">
-                                        <i className="fa fa-link">
-                                        </i>
+                                    <Link className="btn">
+                                        <FaLink className="fa fa-link">
+                                        </FaLink>
                                     </Link>
-                                    <a href="https://www.youtube.com/watch?v=2xHQqYRcrx4"
-                                       className="btn popup-video popup-youtube">
-                                        <i className="fas fa-video">
-                                        </i>
-                                    </a>
-                                    <Link to="/single-property-2.html"
-                                       className="img-poppu btn">
-                                        <i className="fa fa-photo">
-                                        </i>
+                                    <Link
+                                        className="btn">
+                                        <FaVideo className="fas fa-video">
+                                        </FaVideo>
+                                    </Link>
+                                    <Link className="btn">
+                                        <FaImage className="fa fa-photo">
+                                        </FaImage>
                                     </Link>
                                 </div>
                             </div>
                             <div className="homes-content">
                                 <h3>
-                                    <Link to="single-property">{property.name}</Link>
+                                    <Link to={"/single-property/" + property.id}>{property.name}</Link>
                                 </h3>
                                 <p className="homes-address mb-3">
-                                    <Link to="/single-property">
-                                        <i className="fa fa-map-marker"></i><span>{property.address}</span>
+                                    <Link to={"/single-property/" + property.id}>
+                                        <FaMapMarker
+                                            className="fas fa-video"> </FaMapMarker><span>{property.address}</span>
                                     </Link>
                                 </p>
                                 <ul className="homes-list clearfix">
@@ -90,9 +91,9 @@ class PropertyForSale extends Component {
                                         Lisa Jhonson
                                     </a>
                                     <span>
-                                        <i className="fa fa-calendar">
-                                        </i>
-                                            {property.create_since_day} day(s) ago
+                                        <FaCalendar className="fa fa-calendar">
+                                        </FaCalendar>
+                                        {property.create_since_day} day(s) ago
                                     </span>
                                 </div>
                             </div>
@@ -109,8 +110,8 @@ class PropertyForSale extends Component {
             slidesToShow: 3,
             slidesToScroll: 1,
             dots: true,
-            className: "little-margin-slick",
-            arrows: false,
+            arrows: true,
+            focusOnSelect: true,
             adaptiveHeight: true,
             responsive: [{
                 breakpoint: 1292,
@@ -138,19 +139,23 @@ class PropertyForSale extends Component {
                 }
             }]
         }
-        let content = undefined
+        let content
         if (this.props.type === "For Sale") {
             content = (
-                <Slider {...settings} >{
-                    this.get_content("for sale")
-                }
-                </Slider>
+                <>
+                    <Slider {...settings} >{
+                        this.get_content("for sale")
+                    }
+                    </Slider>
+                </>
             )
         } else {
             content = (
-                <Slider {...settings} >
-                    {this.get_content("for rent")}
-                </Slider>
+                <>
+                    <Slider {...settings} >
+                        {this.get_content("for rent")}
+                    </Slider>
+                </>
             )
         }
         return (
@@ -158,7 +163,8 @@ class PropertyForSale extends Component {
                 <div className="container">
                     <div className="sec-title">
                         <h2><span>Properties </span>{this.props.type}</h2>
-                        <p>Find your dream home from our {this.props.type==="For Sale" ? "Sale"  : "Rent"} added properties.</p>
+                        <p>Find your dream home from our {this.props.type === "For Sale" ? "Sale" : "Rent"} added
+                            properties.</p>
                     </div>
                     <div className="portfolio col-xl-12">
                         <div className="slick-lancers">
