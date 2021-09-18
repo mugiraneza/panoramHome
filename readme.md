@@ -52,7 +52,22 @@ Demarrez React JS
 ```
    npm start
 ```
-   
+**En cas de besoin**
+
+###### Pour cree des fixtures
+```
+python manage.py dumpdata ahome --indent 4 > ahome/fixtures/file_name.json
+```
+###### Supprimer les data de l'application ahome ...
+
+```
+./manage.py sqlclear ahome | ./manage.py dbshell
+```
+###### Maintenant, rechargez les appareils maintenant ...
+
+```
+./manage.py syncdb
+```
 
 ## API References
 
@@ -128,6 +143,27 @@ Demarrez React JS
 | :-------- | :------- | :------------------------- |
 | `id`      | `int` | **Required**. Id of property to fetch |
 
+#### Get  Plans
+
+```http
+  GET /api_ahome_service/plan?propertie_id=${id}
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `propertie_id`      | `int` | **Required**. Id of property to fetch |
+
+#### POST  Plans
+
+```http
+  POST /api_ahome_service/plan
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `property`      | `int` | **Required**. Id of property to fetch |
+| `floorNum`      | `int` | **Required**. N° of current floor |
+| `plan`      | `file` | **Required**. only one image field |
 
   
 ## Auteur

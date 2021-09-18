@@ -1,6 +1,5 @@
 from datetime import datetime, timezone
 
-
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils import timezone
@@ -105,11 +104,10 @@ class Propertie(models.Model):
     localisation = models.CharField(max_length=150, null=False, blank=False)
     created_at = models.DateTimeField(editable=False)
     modified_at = models.DateTimeField()
-
     presentation_image = models.ImageField(
         upload_to='property_photo',
         null=True,
-        validators=[FileExtensionValidator(allowed_extensions=['jpeg','jpg', 'png', 'gif'])]
+        validators=[FileExtensionValidator(allowed_extensions=['jpeg', 'jpg', 'png', 'gif'])]
     )
 
     @property
@@ -118,6 +116,7 @@ class Propertie(models.Model):
         return difference.days
 
     ''' On save, update timestamps '''
+
     def save(self, *args, **kwargs):
         if not self.id:
             self.created_at = timezone.now()
@@ -137,3 +136,6 @@ class PlanProperty(models.Model):
     property = models.ForeignKey(Propertie, related_name="planProperty", on_delete=models.CASCADE)
     plan = models.ImageField(upload_to="propertyPlan")
     floorNum = models.IntegerField()
+
+    class Meta:
+        unique_together = ("property", "floorNum")

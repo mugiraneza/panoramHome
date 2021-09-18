@@ -1,0 +1,359 @@
+[
+{
+    "model": "ahome.country",
+    "pk": 1,
+    "fields": {
+        "name": "Togo",
+        "description": "Pays d afrique de l'ouest"
+    }
+},
+{
+    "model": "ahome.state",
+    "pk": 1,
+    "fields": {
+        "country": 1,
+        "name": "Maritime",
+        "description": "Région maritime"
+    }
+},
+{
+    "model": "ahome.state",
+    "pk": 2,
+    "fields": {
+        "country": 1,
+        "name": "Plateaux",
+        "description": "Région des plateaux"
+    }
+},
+{
+    "model": "ahome.state",
+    "pk": 3,
+    "fields": {
+        "country": 1,
+        "name": "Savane",
+        "description": "Région des savanes"
+    }
+},
+{
+    "model": "ahome.state",
+    "pk": 4,
+    "fields": {
+        "country": 1,
+        "name": "Kara",
+        "description": "Région de la Kara"
+    }
+},
+{
+    "model": "ahome.state",
+    "pk": 5,
+    "fields": {
+        "country": 1,
+        "name": "Centrale",
+        "description": "Region centrale"
+    }
+},
+{
+    "model": "ahome.city",
+    "pk": 1,
+    "fields": {
+        "state": 1,
+        "name": "Lomé",
+        "description": "Capitale du togo",
+        "photo": "city_photo/1.jpg"
+    }
+},
+{
+    "model": "ahome.city",
+    "pk": 2,
+    "fields": {
+        "state": 1,
+        "name": "Kpémé",
+        "description": "Ville minière",
+        "photo": "city_photo/2.jpg"
+    }
+},
+{
+    "model": "ahome.city",
+    "pk": 3,
+    "fields": {
+        "state": 1,
+        "name": "Aného",
+        "description": "Ville touristique",
+        "photo": "city_photo/3.jpg"
+    }
+},
+{
+    "model": "ahome.city",
+    "pk": 4,
+    "fields": {
+        "state": 2,
+        "name": "Kpalimé",
+        "description": "Ville touristique",
+        "photo": "city_photo/4.jpg"
+    }
+},
+{
+    "model": "ahome.propertie",
+    "pk": 1,
+    "fields": {
+        "city": 1,
+        "address": "Embassy of Germany",
+        "name": "Ambassade d'Allemagne au Togo",
+        "description": "ambassade d allemagne au togo",
+        "bedroom": 2,
+        "bathroom": 150,
+        "surface": 1,
+        "garage": 25000,
+        "cost": 10,
+        "room": 10,
+        "type": "Résidence séniors",
+        "status": "For sell",
+        "airCond": false,
+        "balcony": true,
+        "internet": true,
+        "dishwasher": true,
+        "bedding": true,
+        "cableTV": true,
+        "parking": true,
+        "pool": true,
+        "fridge": true,
+        "featured": false,
+        "video": "",
+        "localisation": "6.11669,1.2079738",
+        "created_at": "2021-08-07T22:14:19.369Z",
+        "modified_at": "2021-09-18T19:40:35.611Z",
+        "presentation_image": "property_photo/b-8_WFj6hjY.jpg"
+    }
+},
+{
+    "model": "ahome.propertie",
+    "pk": 2,
+    "fields": {
+        "city": 1,
+        "address": "Embassy of Germany",
+        "name": "Embassy of Germany",
+        "description": "ambassade d allemagne au togo",
+        "bedroom": 5,
+        "bathroom": 0,
+        "surface": 150,
+        "garage": 1,
+        "cost": 25000,
+        "room": 10,
+        "type": "Résidence séniors",
+        "status": "for sale",
+        "airCond": false,
+        "balcony": true,
+        "internet": true,
+        "dishwasher": true,
+        "bedding": true,
+        "cableTV": true,
+        "parking": true,
+        "pool": true,
+        "fridge": true,
+        "featured": false,
+        "video": "",
+        "localisation": "6.11669,1.2079738",
+        "created_at": "2021-08-07T22:14:19.369Z",
+        "modified_at": "2021-09-18T19:41:43.117Z",
+        "presentation_image": "property_photo/b-8_U08stRh.jpg"
+    }
+},
+{
+    "model": "ahome.propertie",
+    "pk": 3,
+    "fields": {
+        "city": 1,
+        "address": "Embassy of Germany",
+        "name": "Embassy of Germany",
+        "description": "ambassade d allemagne au togo",
+        "bedroom": 5,
+        "bathroom": 0,
+        "surface": 150,
+        "garage": 1,
+        "cost": 25000,
+        "room": 10,
+        "type": "Résidence séniors",
+        "status": "for sale",
+        "airCond": true,
+        "balcony": true,
+        "internet": true,
+        "dishwasher": true,
+        "bedding": true,
+        "cableTV": true,
+        "parking": true,
+        "pool": true,
+        "fridge": true,
+        "featured": false,
+        "video": "",
+        "localisation": "6.11669,1.2079738",
+        "created_at": "2021-08-14T00:46:11.553Z",
+        "modified_at": "2021-09-05T17:36:05.472Z",
+        "presentation_image": "property_photo/b-8_XeJ6Zsg.jpg"
+    }
+},
+{
+    "model": "ahome.propertie",
+    "pk": 4,
+    "fields": {
+        "city": 1,
+        "address": "Embassy of Germany",
+        "name": "Embassy of Germany",
+        "description": "ambassade d allemagne au togo",
+        "bedroom": 5,
+        "bathroom": 0,
+        "surface": 150,
+        "garage": 1,
+        "cost": 25000,
+        "room": 10,
+        "type": "Résidence séniors",
+        "status": "for sale",
+        "airCond": true,
+        "balcony": true,
+        "internet": true,
+        "dishwasher": true,
+        "bedding": true,
+        "cableTV": true,
+        "parking": true,
+        "pool": true,
+        "fridge": true,
+        "featured": false,
+        "video": "",
+        "localisation": "6.11669,1.2079738",
+        "created_at": "2021-08-14T00:46:47.624Z",
+        "modified_at": "2021-09-05T17:36:29.684Z",
+        "presentation_image": "property_photo/b-8_m7JzmU5.jpg"
+    }
+},
+{
+    "model": "ahome.propertie",
+    "pk": 5,
+    "fields": {
+        "city": 1,
+        "address": "Embassy of Germany",
+        "name": "Maison Harlley",
+        "description": "ambassade d allemagne au togo",
+        "bedroom": 5,
+        "bathroom": 0,
+        "surface": 150,
+        "garage": 1,
+        "cost": 25000,
+        "room": 10,
+        "type": "Résidence séniors",
+        "status": "for sale",
+        "airCond": true,
+        "balcony": true,
+        "internet": true,
+        "dishwasher": true,
+        "bedding": true,
+        "cableTV": true,
+        "parking": true,
+        "pool": true,
+        "fridge": true,
+        "featured": false,
+        "video": "",
+        "localisation": "6.11669,1.2079738",
+        "created_at": "2021-08-14T14:31:14.600Z",
+        "modified_at": "2021-09-05T17:36:58.173Z",
+        "presentation_image": "property_photo/b-8_5wSNoTJ.jpg"
+    }
+},
+{
+    "model": "ahome.propertie",
+    "pk": 6,
+    "fields": {
+        "city": 1,
+        "address": "Embassy of Germany",
+        "name": "Maison Harlley 2",
+        "description": "ambassade d allemagne au togo",
+        "bedroom": 5,
+        "bathroom": 0,
+        "surface": 150,
+        "garage": 1,
+        "cost": 25000,
+        "room": 10,
+        "type": "Résidence séniors",
+        "status": "for rent",
+        "airCond": true,
+        "balcony": true,
+        "internet": true,
+        "dishwasher": true,
+        "bedding": true,
+        "cableTV": true,
+        "parking": true,
+        "pool": true,
+        "fridge": true,
+        "featured": false,
+        "video": "",
+        "localisation": "6.11669,1.2079738",
+        "created_at": "2021-08-14T14:59:23.882Z",
+        "modified_at": "2021-09-05T17:37:31.270Z",
+        "presentation_image": "property_photo/b-8_nErg6At.jpg"
+    }
+},
+{
+    "model": "ahome.propertie",
+    "pk": 7,
+    "fields": {
+        "city": 1,
+        "address": "Embassy of Germany",
+        "name": "Real House Luxury Villa",
+        "description": "ambassade d allemagne au togo",
+        "bedroom": 0,
+        "bathroom": 0,
+        "surface": 0,
+        "garage": 0,
+        "cost": 0,
+        "room": 0,
+        "type": "Maison",
+        "status": "for sale",
+        "airCond": false,
+        "balcony": false,
+        "internet": false,
+        "dishwasher": false,
+        "bedding": false,
+        "cableTV": false,
+        "parking": false,
+        "pool": false,
+        "fridge": false,
+        "featured": false,
+        "video": "",
+        "localisation": "6.11669,1.2079738",
+        "created_at": "2021-09-05T16:27:24.844Z",
+        "modified_at": "2021-09-05T17:37:50.464Z",
+        "presentation_image": "property_photo/b-8_yAzzoU6.jpg"
+    }
+},
+{
+    "model": "ahome.propertie",
+    "pk": 8,
+    "fields": {
+        "city": 1,
+        "address": "Embassy of Germany",
+        "name": "Real House Luxury Villa",
+        "description": "ambassade d allemagne au togo",
+        "bedroom": 0,
+        "bathroom": 0,
+        "surface": 0,
+        "garage": 0,
+        "cost": 0,
+        "room": 0,
+        "type": "Maison",
+        "status": "for sale",
+        "airCond": false,
+        "balcony": false,
+        "internet": false,
+        "dishwasher": false,
+        "bedding": false,
+        "cableTV": false,
+        "parking": false,
+        "pool": false,
+        "fridge": false,
+        "featured": false,
+        "video": "",
+        "localisation": "6.11669,1.2079738",
+        "created_at": "2021-09-05T16:28:15.419Z",
+        "modified_at": "2021-09-05T17:38:22.065Z",
+        "presentation_image": "property_photo/b-8_8inQzOV.jpg"
+    }
+}
+]

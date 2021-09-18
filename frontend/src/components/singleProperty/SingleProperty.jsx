@@ -156,15 +156,9 @@ class SingleProperty extends Component {
                                         </div>
                                         <div className="blog-info details mb-30">
                                             <h5 className="mb-4">Description</h5>
-                                            <p className="mb-3">
+                                            {/*<p className="mb-3">*/}
                                                 {this.state.data.description}
-                                            </p>
-                                            <p className="mb-3">
-                                                {this.state.data.description}
-                                            </p>
-                                            <p className="mb-3">
-                                                {this.state.data.description}
-                                            </p>
+                                            {/*</p>*/}
                                         </div>
                                     </div>
                                 </div>
