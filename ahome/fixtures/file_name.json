@@ -355,5 +355,77 @@
         "modified_at": "2021-09-05T17:38:22.065Z",
         "presentation_image": "property_photo/b-8_8inQzOV.jpg"
     }
+},
+{
+    "model": "ahome.planproperty",
+    "pk": 2,
+    "fields": {
+        "property": 1,
+        "plan": "propertyPlan/floor-plan-1_HyoIe3H.png",
+        "floorNum": 0
+    }
+},
+{
+    "model": "ahome.planproperty",
+    "pk": 3,
+    "fields": {
+        "property": 3,
+        "plan": "propertyPlan/floor-plan-1_sNSbD8s.png",
+        "floorNum": 0
+    }
+},
+{
+    "model": "ahome.planproperty",
+    "pk": 4,
+    "fields": {
+        "property": 4,
+        "plan": "propertyPlan/floor-plan-1_DT4QFss.png",
+        "floorNum": 0
+    }
+},
+{
+    "model": "ahome.planproperty",
+    "pk": 5,
+    "fields": {
+        "property": 5,
+        "plan": "propertyPlan/floor-plan-1_8iF3FJR.png",
+        "floorNum": 0
+    }
+},
+{
+    "model": "ahome.planproperty",
+    "pk": 6,
+    "fields": {
+        "property": 6,
+        "plan": "propertyPlan/floor-plan-1_7bbTv1Y.png",
+        "floorNum": 0
+    }
+},
+{
+    "model": "ahome.planproperty",
+    "pk": 7,
+    "fields": {
+        "property": 7,
+        "plan": "propertyPlan/floor-plan-1_PIS0RX8.png",
+        "floorNum": 0
+    }
+},
+{
+    "model": "ahome.planproperty",
+    "pk": 8,
+    "fields": {
+        "property": 8,
+        "plan": "propertyPlan/floor-plan-1_my5uJw3.png",
+        "floorNum": 0
+    }
+},
+{
+    "model": "ahome.planproperty",
+    "pk": 9,
+    "fields": {
+        "property": 2,
+        "plan": "propertyPlan/floor-plan-1_uMAs8dt.png",
+        "floorNum": 0
+    }
 }
 ]
