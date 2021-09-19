@@ -133,7 +133,7 @@ class ImageProperty(models.Model):
 
 
 class PlanProperty(models.Model):
-    property = models.ForeignKey(Propertie, related_name="planProperty", on_delete=models.CASCADE)
+    property = models.ForeignKey(Propertie, related_name="planProperties", on_delete=models.CASCADE)
     plan = models.ImageField(upload_to="propertyPlan")
     floorNum = models.IntegerField()
 

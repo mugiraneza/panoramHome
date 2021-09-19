@@ -61,13 +61,11 @@ class PropertieSerializer(serializers.ModelSerializer):
     create_since_day = serializers.ReadOnlyField(source="create_since", read_only=True)
     created_at = serializers.DateTimeField(read_only=True)
     city_name = serializers.CharField(source='city.name', read_only=True)
-    plan = PlanSerializer(many=False, read_only=True)
-
-    # presentation_image_url = serializers.SerializerMethodField(read_only=True)
+    planProperties = PlanSerializer(read_only=True, many=True)
 
     class Meta:
         model = Propertie
-        fields = ["id", "address", "name", "description", "bedroom", "surface", "garage", "cost", "room", "type",
+        fields = ("id", "address", "name", "description", "bedroom", "surface", "garage", "cost", "room", "type",
                   "status", "airCond", "balcony", "internet", "dishwasher", "bedding", "cableTV", "parking", "pool",
                   "fridge", "video", "localisation", "city", "city_name", "created_at", "presentation_image",
-                  "create_since_day", "plan"]
+                  "create_since_day", "planProperties")

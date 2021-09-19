@@ -31,7 +31,21 @@ class SingleProperty extends Component {
         } else {
         }
     }
-
+    load_plan=(plans)=>{
+        console.log(plans)
+        if (plans!==undefined) {
+            return plans.map((plan, idx_plan) => {
+                return (
+                    <div key={idx_plan} className="floor-plan property wprt-image-video w50 pro">
+                        <h5>Floor {plan.floorNum} Plans</h5>
+                        <img alt="image" src={plan.plan}/>
+                    </div>
+                )
+            })
+        }
+        else
+            return null;
+    }
     render() {
         return (
             <>
@@ -157,13 +171,12 @@ class SingleProperty extends Component {
                                         <div className="blog-info details mb-30">
                                             <h5 className="mb-4">Description</h5>
                                             {/*<p className="mb-3">*/}
-                                                {this.state.data.description}
+                                            {this.state.data.description}
                                             {/*</p>*/}
                                         </div>
                                     </div>
                                 </div>
                                 <div className="single homes-content details mb-30">
-                                    {/*title */}
                                     <h5 className="mb-4">Property Details</h5>
                                     <ul className="homes-list clearfix">
                                         <li>
@@ -308,21 +321,20 @@ class SingleProperty extends Component {
                                         </li>
                                     </ul>
                                 </div>
-                                <div className="floor-plan property wprt-image-video w50 pro">
-                                    <h5>Floor Plans</h5>
-                                    <img alt="image" src="images/bg/floor-plan-1.png"/>
-                                </div>
+                                {
+                                    this.load_plan(this.state.data.planProperties)
+                                }
                                 <div className="floor-plan property wprt-image-video w50 pro">
                                     <h5>What's Nearby</h5>
                                     <div className="property-nearby">
                                         <div className="row">
                                             <div className="col-lg-12">
                                                 <div className="nearby-info mb-4">
-                                            <span className="nearby-title mb-3 d-block text-info">
-                                               <FaGraduationCap
-                                                   className="fas fa-graduation-cap mr-2"></FaGraduationCap>
-                                                <b className="title">Education</b>
-                                            </span>
+                                                <span className="nearby-title mb-3 d-block text-info">
+                                                    <FaGraduationCap className="fas fa-graduation-cap mr-2">
+                                                    </FaGraduationCap>
+                                                    <b className="title">Education</b>
+                                                </span>
                                                     <div className="nearby-list">
                                                         <ul className="property-list list-unstyled mb-0">
                                                             <li className="d-flex">
