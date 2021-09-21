@@ -13,25 +13,35 @@ Cloner le repository git sur votre machine
 - Installer un environement de développement Pipenv en utilisant la commande pip suivant !
 
 ```
-    pip install pipenv
+    >> pip install pipenv
 ```
 
 - Installer les requirements et les dépendances
 
 ```
-    pip install -r requirements.txt
+    >> pip install -r requirements.txt
 ```
 
+- Obtenir la liste des packages à mettre à jour
+
+```
+    >> pip list --outdated
+```
+- Mettre à jour un package
+
+```
+    >> pip install --upgrade PackageName
+```
 - Lancer la migration de votre base de donnée
 
 ```
-    python manage.py migrate
+    >> python manage.py migrate
 ```
 
 - Lancer Le serveur django 
 
 ```
-    python manage.py runserver
+    >> python manage.py runserver
 ```
     
 ###### _React Js_ :
@@ -39,34 +49,34 @@ Cloner le repository git sur votre machine
 
 - Positionez vous dans le répèrtoir frontend
 ```
-   cd frontend
+    >> cd frontend
 ```
 
 Installez le package React JS
 ```
-   npm install
-   npm audit fix
+   >> npm install
+   >> npm audit fix
 ```
 
 Demarrez React JS
 ```
-   npm start
+   >> npm start
 ```
 **En cas de besoin**
 
 ###### Pour cree des fixtures
 ```
-python manage.py dumpdata ahome --indent 4 > ahome/fixtures/file_name.json
+    >> python manage.py dumpdata ahome --indent 4 > ahome/fixtures/file_name.json
 ```
 ###### Supprimer les data de l'application ahome ...
 
 ```
-./manage.py sqlclear ahome | ./manage.py dbshell
+    >> ./manage.py sqlclear ahome | ./manage.py dbshell
 ```
 ###### Maintenant, rechargez les appareils maintenant ...
 
 ```
-./manage.py syncdb
+    >> ./manage.py syncdb
 ```
 
 ## API References
@@ -169,5 +179,6 @@ python manage.py dumpdata ahome --indent 4 > ahome/fixtures/file_name.json
 ## Auteur
 
 - [@mugiranezaoscar](https://github.com/mugiraneza/)
+- [Mon site Web](https://mugiraneza.com)
 
   

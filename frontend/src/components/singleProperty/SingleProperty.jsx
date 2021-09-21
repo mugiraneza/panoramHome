@@ -13,6 +13,19 @@ import {
 } from "react-icons/all";
 import {reqGetSingleProperty} from "../../api/url";
 import {roundDecimal} from "../../gb_function/global_func";
+import Slider from "react-slick";
+// import {Carousel} from "react-responsive-carousel";
+
+const carousel_config = {
+    infinite: true,
+    slidesToScroll: 1,
+    dots: false,
+    arrows: true,
+    focusOnSelect: true,
+    adaptiveHeight: true,
+    centerMode: true,
+    centerPadding: '0'
+}
 
 class SingleProperty extends Component {
     constructor(props) {
@@ -31,9 +44,9 @@ class SingleProperty extends Component {
         } else {
         }
     }
-    load_plan=(plans)=>{
-        console.log(plans)
-        if (plans!==undefined) {
+
+    load_plan = (plans) => {
+        if (plans !== undefined) {
             return plans.map((plan, idx_plan) => {
                 return (
                     <div key={idx_plan} className="floor-plan property wprt-image-video w50 pro">
@@ -43,9 +56,8 @@ class SingleProperty extends Component {
                 )
             })
         }
-        else
-            return null;
     }
+
     render() {
         return (
             <>
@@ -89,9 +101,9 @@ class SingleProperty extends Component {
                                             </div>
                                         </section>
                                         <div id="listingDetailsSlider"
-                                             className="carousel listing-details-sliders slide mb-30">
+                                             className="carousel listing-details-sliders slide mb-70">
                                             <h5 className="mb-4">Gallery</h5>
-                                            <div className="carousel-inner">
+                                            <Slider {...carousel_config} className="carousel-inner">
                                                 <div className="active item carousel-item" data-slide-number="0">
                                                     <img src={this.state.data.presentation_image} className="img-fluid"
                                                          alt="slider-listing"/>
@@ -112,17 +124,7 @@ class SingleProperty extends Component {
                                                     <img src={this.state.data.presentation_image} className="img-fluid"
                                                          alt="slider-listing"/>
                                                 </div>
-                                                <a className="carousel-control left" href="#listingDetailsSlider"
-                                                   data-slide="prev">
-                                                    <FaAngleLeft className="fa fa-angle-left">
-                                                    </FaAngleLeft>
-                                                </a>
-                                                <a className="carousel-control right" href="#listingDetailsSlider"
-                                                   data-slide="next">
-                                                    <FaAngleRight className="fa fa-angle-right">
-                                                    </FaAngleRight>
-                                                </a>
-                                            </div>
+                                            </Slider>
                                             {/*main slider carousel nav controls*/}
                                             <ul className="carousel-indicators smail-listing list-inline">
                                                 <li className="list-inline-item active">
