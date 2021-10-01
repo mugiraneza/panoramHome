@@ -14,6 +14,12 @@ Cloner le repository git sur votre machine
 
 ```
     >> pip install pipenv
+    
+    OU
+    
+    >> py -m venv venv
+    >> cd venv\Scripts\activate
+    (env)>> ..................
 ```
 
 - Installer les requirements et les dépendances
