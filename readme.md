@@ -72,7 +72,7 @@ Demarrez React JS
 
 ###### Pour cree des fixtures
 ```
-    >> python manage.py dumpdata ahome --indent 4 > ahome/fixtures/file_name.json
+    >> python -Xutf8 manage.py dumpdata ahome --indent 4 > ahome/fixtures/file_name.json
 ```
 ###### Supprimer les data de l'application ahome ...
 
