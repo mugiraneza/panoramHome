@@ -77,12 +77,14 @@ Demarrez React JS
 ###### Supprimer les data de l'application ahome ...
 
 ```
-    >> ./manage.py sqlclear ahome | ./manage.py dbshell
+    >> python ./manage.py sqlclear ahome | ./manage.py dbshell
 ```
 ###### Maintenant, rechargez les appareils maintenant ...
 
 ```
-    >> ./manage.py syncdb
+    >> python ./manage.py syncdb
+ou
+    >> python ./manage.py dumpdata qcm > qcm/fixtures/file_name.json
 ```
 
 ## API References
