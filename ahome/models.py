@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils import timezone
-
+from django.conf import settings
 PROPERTIES_STATUS_CHOISES = [
     ('for sale', 'for Sale'),
     ('for rent', 'for rent'),

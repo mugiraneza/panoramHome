@@ -3,7 +3,6 @@ import HeaderSimple from "../../components/headerSimple/HeaderSimple";
 import SingleProperty from "../../components/singleProperty/SingleProperty";
 
 class SecondaryNavRouter extends Component {
-
     render() {
         return (
             <>
@@ -19,5 +18,4 @@ class SecondaryNavRouter extends Component {
         );
     }
 }
-
 export default SecondaryNavRouter;
