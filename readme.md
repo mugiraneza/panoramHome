@@ -183,7 +183,21 @@ ou
 | `floorNum`      | `int` | **Required**. N° of current floor |
 | `plan`      | `file` | **Required**. only one image field |
 
-  
+## Tests
+* Premièrement 
+```
+    >> coverage run --omit=*/venv/*,*/migrations/*,*/__init__.py manage.py test
+```
+* Referez-vous à la documentation de [coverage](https://coverage.readthedocs.io/en/6.2/)
+* de facon generale
+```    
+    >> coverage report -m
+```
+* pour avoir un rapport de test en html
+```    
+    >> coverage html
+```
+
 ## Auteur
 
 - [@mugiranezaoscar](https://github.com/mugiraneza/)
