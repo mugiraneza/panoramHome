@@ -5,9 +5,10 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 
-from ahome.models import Country, State, City, Propertie, PlanProperty
-from ahome.serializers import UserSerializer, GroupSerializer, CountrySerializer, StateSerializer, CitySerializer, \
-    PropertieSerializer, PlanSerializer
+from ahome.models import Country, State, City, Propertie, PlanProperty, ImageProperty
+from ahome.serializers import CountrySerializer, StateSerializer, CitySerializer, \
+    PropertieSerializer, PlanSerializer, ImageSerializer
+
 
 # class CountryViewSet(views.APIView):
 #     def get(self, request, **kwargs):
@@ -57,6 +58,14 @@ class CityViewSet(viewsets.ModelViewSet):
     serializer_class = CitySerializer
 
 
+class ImageViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows City to be viewed or edited.
+    """
+    queryset = ImageProperty.objects.all()
+    serializer_class = ImageSerializer
+
+
 class PropertieViewSet(views.APIView):
 
     def get(self, request, *args, **kwargs):
@@ -80,7 +89,9 @@ class PropertieViewSet(views.APIView):
 
     def put(self, request, **kwargs):
         if "id" in request.data.keys():
-            id_property = request.GET.get("id", None)
+            id_property = request.data.get("id", None)
+            print(request.data.get("id", None))
+            print(id_property)
             instance = get_object_or_404(Propertie, id=id_property)
             serialized_data = PropertieSerializer(data=request.data, instance=instance, partial=True,
                                                   context={"request": request, "instance": instance})
@@ -134,7 +145,7 @@ class PlanPropertySet(views.APIView):
             propertie_id = request.GET.get("propertie_id", None)
             instance = get_object_or_404(PlanProperty, propertie_id=propertie_id)
             serialized_data = PlanSerializer(data=request.data, instance=instance, partial=True,
-                                                  context={"request": request, "instance": instance})
+                                             context={"request": request, "instance": instance})
             if not serialized_data.is_valid():
                 return Response(serialized_data.errors, status=status.HTTP_400_BAD_REQUEST)
             else:

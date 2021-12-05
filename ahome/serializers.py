@@ -1,11 +1,12 @@
 from abc import ABC
 from datetime import datetime, timezone
+from email.mime import image
 
 import plan as plan
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 
-from ahome.models import Country, City, State, Propertie, PlanProperty
+from ahome.models import Country, City, State, Propertie, PlanProperty, ImageProperty
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -34,8 +35,19 @@ class CitySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = City
-        fields = ["id", "name", "description", "count_properties", "photo"]
+        fields = ["id", "name", "state", "description", "count_properties", "photo"]
 
+
+class ImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ImageProperty
+        fields = '__all__'
+
+
+class ImageListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ImageProperty
+        fields = ['img']
 
 class StateSerializer(serializers.ModelSerializer):
     class Meta:
@@ -62,10 +74,12 @@ class PropertieSerializer(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(read_only=True)
     city_name = serializers.CharField(source='city.name', read_only=True)
     planProperties = PlanSerializer(read_only=True, many=True)
+    imageProperties = ImageListSerializer(read_only=True, many=True)
 
     class Meta:
         model = Propertie
-        fields = ("id", "address", "name", "description", "bedroom", "surface", "garage", "cost", "room", "type",
-                  "status", "airCond", "balcony", "internet", "dishwasher", "bedding", "cableTV", "parking", "pool",
-                  "fridge", "video", "localisation", "city", "city_name", "created_at", "presentation_image",
-                  "create_since_day", "planProperties")
+        fields = (
+            "id", "address", "name", "description", "bathroom", "bedroom", "surface", "garage", "cost", "room", "type",
+            "status", "airCond", "balcony", "internet", "dishwasher", "bedding", "cableTV", "parking", "pool",
+            "fridge", "video", "localisation", "city", "city_name", "created_at", "presentation_image",
+            "create_since_day", "planProperties", "imageProperties")

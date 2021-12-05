@@ -19,7 +19,7 @@ def check(email):
 
 # Create your models here.
 class CustomAccountManager(BaseUserManager):
-    def create_superuser(self, email, password, pseudo, first_name, last_name, **other_fields):
+    def create_superuser(self, email, password, user_name, first_name, last_name, **other_fields):
         other_fields.setdefault('is_staff', True)
         other_fields.setdefault('is_superuser', True)
         other_fields.setdefault('is_active', True)
@@ -27,9 +27,9 @@ class CustomAccountManager(BaseUserManager):
             raise ValueError('SuperUser must be assigned to is_staff=True')
         if not other_fields.get('is_superuser'):
             raise ValueError('SuperUser must be assigned to is_superuser=True')
-        return self.create_user(email, pseudo, first_name, last_name, password, **other_fields)
+        return self.create_user(email, user_name, first_name, last_name, password, **other_fields)
 
-    def create_user(self, email, pseudo, first_name, last_name, password, **other_fields):
+    def create_user(self, email, user_name, first_name, last_name, password, **other_fields):
         if not email:
             raise ValueError('You must provide an email address')
         elif not check(email):
@@ -37,7 +37,8 @@ class CustomAccountManager(BaseUserManager):
         try:
             valid = validate_email(email)
             email = valid.email
-            user = self.model.user(email, pseudo, first_name, last_name, password, **other_fields)
+            user = self.model(email=email, user_name=user_name, first_name=first_name, last_name=last_name,
+                              password=password, **other_fields)
             user.set_password(password)
             user.save()
             return user
@@ -47,15 +48,15 @@ class CustomAccountManager(BaseUserManager):
 
 class NewUser(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['user_name', 'first_name']
+    REQUIRED_FIELDS = ['user_name', 'first_name', 'last_name']
     email = models.EmailField(_('email address'), unique=True)
-    pseudo = models.CharField(max_length=150, unique=True)
+    user_name = models.CharField(max_length=150, unique=True)
     first_name = models.CharField(max_length=150, blank=True)
     last_name = models.CharField(max_length=150, blank=True)
     start_date = models.DateTimeField(default=timezone.now)
     about = models.TextField(_('about'), max_length=500, blank=True)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     objects = CustomAccountManager()
 
     def __str__(self):

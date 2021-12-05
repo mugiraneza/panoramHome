@@ -4,7 +4,6 @@ import {FaCaretDown, FaGlobeAfrica, FaHome} from "react-icons/fa";
 
 import "./HeaderParalax.css"
 import {hrefUseless} from "../../gb_function/global_func";
-import {HashLink} from "react-router-hash-link";
 
 class HeaderParalax extends Component {
     // constructor(props) {
@@ -68,7 +67,7 @@ class HeaderParalax extends Component {
                                 <li><a href="add-property.html"> Add Property</a></li>
                                 <li><a href="payment-method.html"> Payments</a></li>
                                 <li><a href="change-password.html"> Change Password</a></li>
-                                <li><HashLink to="#" data-lantext="De"> Log Out</HashLink></li>
+                                <li><a to="#" data-lantext="De"> Log Out</a></li>
                             </ul>
                         </div>
                         <div className="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">

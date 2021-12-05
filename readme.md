@@ -85,6 +85,12 @@ Demarrez React JS
     >> ./manage.py syncdb
 ou
     >> ./manage.py dumpdata qcm > qcm/fixtures/file_name.json
+``` ./manage.py sqlclear ahome | ./manage.py dbshell
+```
+###### Optionnel ...
+
+```
+    >> py manage.py createsuperuser
 ```
 
 ## API References

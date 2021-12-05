@@ -83,7 +83,7 @@ html {
 }
 
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     font-weight: 400;
     color: #666;
@@ -762,7 +762,7 @@ img {
 }
 
 .tp-caption.font-p {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 400;
 }
@@ -7524,7 +7524,7 @@ html input[disabled] {
     padding-left: 28px;
     margin-right: 20px;
     margin-bottom: 0;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: #666;
     font-size: 14.5px;
 }
@@ -12222,7 +12222,7 @@ form label.error {
     border-radius: 5px;
     font-weight: 400;
     color: #000;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background: #f8f8f8;
 }
 
@@ -13919,7 +13919,7 @@ a.button,
     -webkit-box-shadow: none;
     box-shadow: none;
     color: #757575;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 15px;
 }
@@ -14087,7 +14087,7 @@ a.button,
     padding-left: 28px;
     margin-right: 20px;
     margin-bottom: 0;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: #666;
     font-size: 14.5px;
 }
@@ -14851,6 +14851,7 @@ div.datedropper.my-style.picker-lkd .pick-submit {
     color: #274abb;
     position: relative;
     top: 0px;
+    margin-right: 5px;
 }
 
 .row.mrg-top-15 label.mb-3 {
@@ -14882,7 +14883,7 @@ div.datedropper.my-style.picker-lkd .pick-submit {
     border: 1px solid #dae2e9;
     background-color: #fff;
     padding: 15px;
-    font-family: "Lato", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     color: #7e8c99;
     margin-bottom: 1rem;
@@ -15650,6 +15651,7 @@ div.datedropper.my-style.picker-lkd .pick-submit {
 }
 
 .inner-pages .blog .homes-content.details span {
+    vertical-align: super;
     font-size: 1rem;
     color: #000;
 }
@@ -18470,7 +18472,7 @@ header.payment-card-header .pull-right img {
     color: #666;
     background: #fff;
     font-weight: 400;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .inner-pages .services .top-headings-section.se h2 {
@@ -21398,7 +21400,7 @@ form label.error {
     border: none;
     font-weight: 400;
     color: #000;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background: white;
 }
 
@@ -22152,7 +22154,7 @@ section.ui-element {
 }
 
 .ui-elements .ui-buttons h4.effect {
-    font-family: Lato, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     color: #444;
     font-weight: 400;
@@ -22467,7 +22469,7 @@ section.ui-element {
 .ui-elements h4 {
     letter-spacing: 2px;
     margin-right: -2px;
-    font-family: Lato, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     color: #444;
     font-weight: 400;

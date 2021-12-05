@@ -108,22 +108,20 @@ class SingleProperty extends Component {
                                                     <img src={this.state.data.presentation_image} className="img-fluid"
                                                          alt="slider-listing"/>
                                                 </div>
-                                                <div className="item carousel-item" data-slide-number="1">
-                                                    <img src={this.state.data.presentation_image} className="img-fluid"
-                                                         alt="slider-listing"/>
-                                                </div>
-                                                <div className="item carousel-item" data-slide-number="2">
-                                                    <img src={this.state.data.presentation_image} className="img-fluid"
-                                                         alt="slider-listing"/>
-                                                </div>
-                                                <div className="item carousel-item" data-slide-number="4">
-                                                    <img src={this.state.data.presentation_image} className="img-fluid"
-                                                         alt="slider-listing"/>
-                                                </div>
-                                                <div className="item carousel-item" data-slide-number="5">
-                                                    <img src={this.state.data.presentation_image} className="img-fluid"
-                                                         alt="slider-listing"/>
-                                                </div>
+                                                {
+
+                                                    this.state.data.imageProperties &&
+                                                    this.state.data.imageProperties.map((img, index) => {
+                                                        return (
+                                                            <div key={index} className="item carousel-item"
+                                                                 data-slide-number="1">
+                                                                <img src={img.img}
+                                                                     className="img-fluid"
+                                                                     alt="slider-listing"/>
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
                                             </Slider>
                                             {/*main slider carousel nav controls*/}
                                             <ul className="carousel-indicators smail-listing list-inline">
@@ -135,38 +133,22 @@ class SingleProperty extends Component {
                                                              alt="listing-small"/>
                                                     </a>
                                                 </li>
-                                                <li className="list-inline-item">
-                                                    <a id="carousel-selector-1" data-slide-to="1"
-                                                       data-target="#listingDetailsSlider">
-                                                        <img src={this.state.data.presentation_image}
-                                                             className="img-fluid"
-                                                             alt="listing-small"/>
-                                                    </a>
-                                                </li>
-                                                <li className="list-inline-item">
-                                                    <a id="carousel-selector-2" data-slide-to="2"
-                                                       data-target="#listingDetailsSlider">
-                                                        <img src={this.state.data.presentation_image}
-                                                             className="img-fluid"
-                                                             alt="listing-small"/>
-                                                    </a>
-                                                </li>
-                                                <li className="list-inline-item">
-                                                    <a id="carousel-selector-3" data-slide-to="3"
-                                                       data-target="#listingDetailsSlider">
-                                                        <img src={this.state.data.presentation_image}
-                                                             className="img-fluid"
-                                                             alt="listing-small"/>
-                                                    </a>
-                                                </li>
-                                                <li className="list-inline-item">
-                                                    <a id="carousel-selector-4" data-slide-to="4"
-                                                       data-target="#listingDetailsSlider">
-                                                        <img src={this.state.data.presentation_image}
-                                                             className="img-fluid"
-                                                             alt="listing-small"/>
-                                                    </a>
-                                                </li>
+                                                {
+
+                                                    this.state.data.imageProperties &&
+                                                    this.state.data.imageProperties.map((img, index) => {
+                                                        return (
+                                                            <li key={index} className="list-inline-item">
+                                                                <a id="carousel-selector-1" data-slide-to="1"
+                                                                   data-target="#listingDetailsSlider">
+                                                                    <img src={img.img}
+                                                                         className="img-fluid"
+                                                                         alt="listing-small"/>
+                                                                </a>
+                                                            </li>
+                                                        )
+                                                    })
+                                                }
                                             </ul>
                                             {/*main slider carousel items*/}
                                         </div>
@@ -186,16 +168,16 @@ class SingleProperty extends Component {
                                             <span className="det">{this.state.data.id}</span>
                                         </li>
                                         <li>
-                                            <span className="font-weight-bold mr-1">Property Type:</span>
-                                            <span className="det">{this.state.data.type}</span>
+                                            <span className="font-weight-bold mr-1">Type:</span>
+                                            <span className="det"> {this.state.data.type}</span>
                                         </li>
                                         <li>
                                             <span className="font-weight-bold mr-1">Property status:</span>
-                                            <span className="det">{this.state.data.status}</span>
+                                            <span className="det"> {this.state.data.status}</span>
                                         </li>
                                         <li>
-                                            <span className="font-weight-bold mr-1">Property Price:</span>
-                                            <span className="det">${this.state.data.cost}</span>
+                                            <span className="font-weight-bold mr-1"> Property Price:</span>
+                                            <span className="det"> ${this.state.data.cost}</span>
                                         </li>
                                         <li>
                                             <span className="font-weight-bold mr-1">Rooms:</span>

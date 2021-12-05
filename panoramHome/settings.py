@@ -58,7 +58,6 @@ CORS_ALLOW_HEADERS = [
     "x-requested-with",
 ]
 # Application definition
-
 INSTALLED_APPS = [
     # 'django.contrib.admin',
     'django.contrib.auth',
@@ -75,7 +74,6 @@ INSTALLED_APPS = [
     # CORS
     'corsheaders',
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -87,9 +85,22 @@ MIDDLEWARE = [
     # CORS
     'corsheaders.middleware.CorsMiddleware',
 ]
-
 ROOT_URLCONF = 'panoramHome.urls'
-
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
@@ -100,12 +111,9 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
-
 WSGI_APPLICATION = 'panoramHome.wsgi.application'
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

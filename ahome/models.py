@@ -3,9 +3,8 @@ from datetime import datetime, timezone
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils import timezone
-from django.conf import settings
 PROPERTIES_STATUS_CHOISES = [
-    ('for sale', 'for Sale'),
+    ('for sale', 'for sale'),
     ('for rent', 'for rent'),
 ]
 PROPERTIES_TYPE_CHOICES = [
@@ -128,9 +127,11 @@ class Propertie(models.Model):
 
 
 class ImageProperty(models.Model):
-    property = models.ForeignKey(Propertie, related_name="imageProperty", on_delete=models.CASCADE)
+    property = models.ForeignKey(Propertie, related_name="imageProperties", on_delete=models.CASCADE)
     img = models.ImageField(upload_to="propertyImg")
 
+    def __str__(self):
+        return self.img
 
 class PlanProperty(models.Model):
     property = models.ForeignKey(Propertie, related_name="planProperties", on_delete=models.CASCADE)

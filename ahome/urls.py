@@ -7,6 +7,7 @@ router = routers.DefaultRouter()
 router.register(r'state', views.StateViewSet)
 router.register(r'city', views.CityViewSet)
 router.register(r'country', views.CountryViewSet)
+router.register(r'image', views.ImageViewSet)
 urlpatterns = [
     url(r'^property/?$', views.PropertieViewSet.as_view(), name='property_view'),
     url(r'^plan/?$', views.PlanPropertySet.as_view(), name='plan_view'),
