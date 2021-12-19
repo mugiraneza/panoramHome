@@ -70,22 +70,19 @@ Demarrez React JS
 ```
 **En cas de besoin**
 
-###### Pour cree des fixtures
+###### Pour cree des fixtures (**Exper only**)
 ```
     >> python -Xutf8 manage.py dumpdata ahome --indent 4 > ahome/fixtures/file_name.json
 ```
 ###### Supprimer les data de l'application ahome ...
 
 ```
-    >> ./manage.py sqlclear ahome | ./manage.py dbshell
+    >> manage.py sqlclear ahome | ./manage.py dbshell
 ```
-###### Maintenant, rechargez les appareils maintenant ...
+###### Maintenant, rechargez les fixtures maintenant ...
 
 ```
-    >> ./manage.py syncdb
-ou
-    >> ./manage.py dumpdata qcm > qcm/fixtures/file_name.json
-``` ./manage.py sqlclear ahome | ./manage.py dbshell
+    >> manage.py loaddata ahome/fixtures/file_name.json
 ```
 ###### Optionnel ...
 
