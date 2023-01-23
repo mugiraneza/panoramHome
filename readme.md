@@ -19,6 +19,10 @@ Cloner le repository git sur votre machine
     
     >> py -m venv venv
     >> cd venv\Scripts\activate
+    
+    OU en cas d erreur
+    >> set-executionpolicy unrestricted
+    >> .\venv\Scripts\activate
     (env)>> ..................
 ```
 
