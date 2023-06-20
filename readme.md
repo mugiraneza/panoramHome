@@ -204,7 +204,9 @@ Demarrez React JS
 ```
 * pour avoir un rapport de test en html
 ```    
+    >> coverage run --omit='*/venv/*,*/frontend/*,*/*/migrations/*,*apps.py' manage.py test
     >> coverage html
+    >> coverage report -m
 ```
 
 ## Auteur

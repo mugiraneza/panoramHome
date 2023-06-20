@@ -19,7 +19,7 @@ def check(email):
 
 # Create your models here.
 class CustomAccountManager(BaseUserManager):
-    def create_superuser(self, email, password, user_name, first_name, last_name, **other_fields):
+    def create_superuser(self, email, user_name, first_name, last_name, password, **other_fields):
         other_fields.setdefault('is_staff', True)
         other_fields.setdefault('is_superuser', True)
         other_fields.setdefault('is_active', True)
@@ -34,16 +34,14 @@ class CustomAccountManager(BaseUserManager):
             raise ValueError('You must provide an email address')
         elif not check(email):
             raise ValueError('Email address must be a valid to process')
-        try:
-            valid = validate_email(email)
-            email = valid.email
-            user = self.model(email=email, user_name=user_name, first_name=first_name, last_name=last_name,
-                              password=password, **other_fields)
-            user.set_password(password)
-            user.save()
-            return user
-        except EmailNotValidError:
-            raise ValueError('Email address must be a valid to process')
+
+        valid = validate_email(email)
+        email = valid.email
+        user = self.model(email=email, user_name=user_name, first_name=first_name, last_name=last_name,
+                          password=password, **other_fields)
+        user.set_password(password)
+        user.save()
+        return user
 
 
 class NewUser(AbstractBaseUser, PermissionsMixin):
