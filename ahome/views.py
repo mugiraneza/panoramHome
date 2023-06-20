@@ -1,9 +1,9 @@
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets, views, status
-from rest_framework import permissions
+from rest_framework import viewsets, views, status, permissions
 from rest_framework.generics import get_object_or_404
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
+#from rest_framework.permissions import IsAuthenticated
 
 from ahome.models import Country, State, City, Propertie, PlanProperty, ImageProperty
 from ahome.serializers import CountrySerializer, StateSerializer, CitySerializer, \
@@ -34,6 +34,8 @@ from ahome.serializers import CountrySerializer, StateSerializer, CitySerializer
 #         else:
 #             return Response()
 #         return Response(CountrySerializer(country_list, many=True).data)
+
+
 class CountryViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows Country to be viewed or edited.
@@ -69,7 +71,7 @@ class ImageViewSet(viewsets.ModelViewSet):
 class PropertieViewSet(views.APIView):
 
     def get(self, request, *args, **kwargs):
-        pk = request.GET.get('id', None)
+        pk = request.data["id"] if "id" in request.data else None
         if pk:
             property_list = get_object_or_404(Propertie, pk=pk)
             many = False
@@ -117,7 +119,7 @@ class PlanPropertySet(views.APIView):
     parser_classes = (MultiPartParser, FormParser,)
 
     def get(self, request, *args, **kwargs):
-        pk = request.GET.get('propertie_id', None)
+        pk = request.data["propertie_id"] if "propertie_id" in request.data else None
         if pk:
             plans_list = get_object_or_404(PlanProperty, property_id=pk)
         else:
@@ -131,7 +133,7 @@ class PlanPropertySet(views.APIView):
     def post(self, request, **kwargs):
         serialized_data = PlanSerializer(data=request.data)
         if not serialized_data.is_valid():
-            return Response(serialized_data.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Respdonse(serialized_data.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
             serialized_data.save()
             return Response(serialized_data.data, status=status.HTTP_200_OK)

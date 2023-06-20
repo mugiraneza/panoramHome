@@ -1,5 +1,4 @@
-from django.conf.urls import url
-from django.urls import include
+from django.urls import include,path
 from rest_framework import routers
 from ahome import views
 
@@ -9,7 +8,7 @@ router.register(r'city', views.CityViewSet)
 router.register(r'country', views.CountryViewSet)
 router.register(r'image', views.ImageViewSet)
 urlpatterns = [
-    url(r'^property/?$', views.PropertieViewSet.as_view(), name='property_view'),
-    url(r'^plan/?$', views.PlanPropertySet.as_view(), name='plan_view'),
-    url('', include(router.urls)),
+    path('property', views.PropertieViewSet.as_view(), name='property_view'),
+    path('plan', views.PlanPropertySet.as_view(), name='plan_view'),
+    path('', include(router.urls)),
 ]

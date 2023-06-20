@@ -13,7 +13,7 @@
     "fields": {
         "country": 1,
         "name": "Maritime",
-        "description": "RÃ©gion maritime"
+        "description": "Région maritime"
     }
 },
 {
@@ -22,7 +22,7 @@
     "fields": {
         "country": 1,
         "name": "Plateaux",
-        "description": "RÃ©gion des plateaux"
+        "description": "Région des plateaux"
     }
 },
 {
@@ -31,7 +31,7 @@
     "fields": {
         "country": 1,
         "name": "Savane",
-        "description": "RÃ©gion des savanes"
+        "description": "Région des savanes"
     }
 },
 {
@@ -40,7 +40,7 @@
     "fields": {
         "country": 1,
         "name": "Kara",
-        "description": "RÃ©gion de la Kara"
+        "description": "Région de la Kara"
     }
 },
 {
@@ -57,7 +57,7 @@
     "pk": 1,
     "fields": {
         "state": 1,
-        "name": "LomÃ©",
+        "name": "Lomé",
         "description": "Capitale du togo",
         "photo": "city_photo/1.jpg"
     }
@@ -67,8 +67,8 @@
     "pk": 2,
     "fields": {
         "state": 1,
-        "name": "KpÃ©mÃ©",
-        "description": "Ville miniÃ¨re",
+        "name": "Kpémé",
+        "description": "Ville minière",
         "photo": "city_photo/2.jpg"
     }
 },
@@ -77,7 +77,7 @@
     "pk": 3,
     "fields": {
         "state": 1,
-        "name": "AnÃ©ho",
+        "name": "Aného",
         "description": "Ville touristique",
         "photo": "city_photo/3.jpg"
     }
@@ -87,7 +87,7 @@
     "pk": 4,
     "fields": {
         "state": 2,
-        "name": "KpalimÃ©",
+        "name": "Kpalimé",
         "description": "Ville touristique",
         "photo": "city_photo/4.jpg"
     }
@@ -106,7 +106,7 @@
         "garage": 25000,
         "cost": 10,
         "room": 10,
-        "type": "RÃ©sidence sÃ©niors",
+        "type": "Résidence séniors",
         "status": "For sell",
         "airCond": false,
         "balcony": true,
@@ -122,7 +122,7 @@
         "localisation": "6.11669,1.2079738",
         "created_at": "2021-08-07T22:14:19.369Z",
         "modified_at": "2021-09-18T19:40:35.611Z",
-        "presentation_image": "property_photo/b-8_WFj6hjY.jpg"
+        "presentation_image": "property_photo/1.jpg"
     }
 },
 {
@@ -139,7 +139,7 @@
         "garage": 1,
         "cost": 25000,
         "room": 10,
-        "type": "RÃ©sidence sÃ©niors",
+        "type": "Résidence séniors",
         "status": "for sale",
         "airCond": false,
         "balcony": true,
@@ -155,7 +155,7 @@
         "localisation": "6.11669,1.2079738",
         "created_at": "2021-08-07T22:14:19.369Z",
         "modified_at": "2021-09-18T19:41:43.117Z",
-        "presentation_image": "property_photo/b-8_U08stRh.jpg"
+        "presentation_image": "property_photo/2.jpg"
     }
 },
 {
@@ -172,7 +172,7 @@
         "garage": 1,
         "cost": 25000,
         "room": 10,
-        "type": "RÃ©sidence sÃ©niors",
+        "type": "Résidence séniors",
         "status": "for sale",
         "airCond": true,
         "balcony": true,
@@ -188,7 +188,7 @@
         "localisation": "6.11669,1.2079738",
         "created_at": "2021-08-14T00:46:11.553Z",
         "modified_at": "2021-09-05T17:36:05.472Z",
-        "presentation_image": "property_photo/b-8_XeJ6Zsg.jpg"
+        "presentation_image": "property_photo/3.jpg"
     }
 },
 {
@@ -205,7 +205,7 @@
         "garage": 1,
         "cost": 25000,
         "room": 10,
-        "type": "RÃ©sidence sÃ©niors",
+        "type": "Résidence séniors",
         "status": "for sale",
         "airCond": true,
         "balcony": true,
@@ -221,7 +221,7 @@
         "localisation": "6.11669,1.2079738",
         "created_at": "2021-08-14T00:46:47.624Z",
         "modified_at": "2021-09-05T17:36:29.684Z",
-        "presentation_image": "property_photo/b-8_m7JzmU5.jpg"
+        "presentation_image": "property_photo/4.jpg"
     }
 },
 {
@@ -238,7 +238,7 @@
         "garage": 1,
         "cost": 25000,
         "room": 10,
-        "type": "RÃ©sidence sÃ©niors",
+        "type": "Résidence séniors",
         "status": "for sale",
         "airCond": true,
         "balcony": true,
@@ -254,7 +254,7 @@
         "localisation": "6.11669,1.2079738",
         "created_at": "2021-08-14T14:31:14.600Z",
         "modified_at": "2021-09-05T17:36:58.173Z",
-        "presentation_image": "property_photo/b-8_5wSNoTJ.jpg"
+        "presentation_image": "property_photo/5.jpg"
     }
 },
 {
@@ -271,7 +271,7 @@
         "garage": 1,
         "cost": 25000,
         "room": 10,
-        "type": "RÃ©sidence sÃ©niors",
+        "type": "Résidence séniors",
         "status": "for rent",
         "airCond": true,
         "balcony": true,
@@ -287,7 +287,7 @@
         "localisation": "6.11669,1.2079738",
         "created_at": "2021-08-14T14:59:23.882Z",
         "modified_at": "2021-09-05T17:37:31.270Z",
-        "presentation_image": "property_photo/b-8_nErg6At.jpg"
+        "presentation_image": "property_photo/6.jpg"
     }
 },
 {
@@ -320,7 +320,7 @@
         "localisation": "6.11669,1.2079738",
         "created_at": "2021-09-05T16:27:24.844Z",
         "modified_at": "2021-09-05T17:37:50.464Z",
-        "presentation_image": "property_photo/b-8_yAzzoU6.jpg"
+        "presentation_image": "property_photo/7.jpg"
     }
 },
 {
@@ -353,7 +353,15 @@
         "localisation": "6.11669,1.2079738",
         "created_at": "2021-09-05T16:28:15.419Z",
         "modified_at": "2021-09-05T17:38:22.065Z",
-        "presentation_image": "property_photo/b-8_8inQzOV.jpg"
+        "presentation_image": "property_photo/8.jpg"
+    }
+},
+{
+    "model": "ahome.imageproperty",
+    "pk": 1,
+    "fields": {
+        "property": 1,
+        "img": "propertyImg/cc95a578-6671-4a30-9f85-7c8e05dce5d6.jpg"
     }
 },
 {
@@ -361,7 +369,7 @@
     "pk": 2,
     "fields": {
         "property": 1,
-        "plan": "propertyPlan/floor-plan-1_HyoIe3H.png",
+        "plan": "propertyPlan/1.png",
         "floorNum": 0
     }
 },
@@ -370,7 +378,7 @@
     "pk": 3,
     "fields": {
         "property": 3,
-        "plan": "propertyPlan/floor-plan-1_sNSbD8s.png",
+        "plan": "propertyPlan/2.png",
         "floorNum": 0
     }
 },
@@ -379,7 +387,7 @@
     "pk": 4,
     "fields": {
         "property": 4,
-        "plan": "propertyPlan/floor-plan-1_DT4QFss.png",
+        "plan": "propertyPlan/3.png",
         "floorNum": 0
     }
 },
@@ -388,7 +396,7 @@
     "pk": 5,
     "fields": {
         "property": 5,
-        "plan": "propertyPlan/floor-plan-1_8iF3FJR.png",
+        "plan": "propertyPlan/4.png",
         "floorNum": 0
     }
 },
@@ -397,7 +405,7 @@
     "pk": 6,
     "fields": {
         "property": 6,
-        "plan": "propertyPlan/floor-plan-1_7bbTv1Y.png",
+        "plan": "propertyPlan/5.png",
         "floorNum": 0
     }
 },
@@ -406,7 +414,7 @@
     "pk": 7,
     "fields": {
         "property": 7,
-        "plan": "propertyPlan/floor-plan-1_PIS0RX8.png",
+        "plan": "propertyPlan/6.png",
         "floorNum": 0
     }
 },
@@ -415,7 +423,7 @@
     "pk": 8,
     "fields": {
         "property": 8,
-        "plan": "propertyPlan/floor-plan-1_my5uJw3.png",
+        "plan": "propertyPlan/7.png",
         "floorNum": 0
     }
 },
@@ -424,7 +432,7 @@
     "pk": 9,
     "fields": {
         "property": 2,
-        "plan": "propertyPlan/floor-plan-1_uMAs8dt.png",
+        "plan": "propertyPlan/8.png",
         "floorNum": 0
     }
 }

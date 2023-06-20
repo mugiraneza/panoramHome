@@ -18,11 +18,10 @@ Cloner le repository git sur votre machine
     OU
     
     >> py -m venv venv
-    >> cd venv\Scripts\activate
+    >> venv\Scripts\activate
     
     OU en cas d erreur
     >> set-executionpolicy unrestricted
-    >> .\venv\Scripts\activate
     (env)>> ..................
 ```
 
@@ -41,6 +40,9 @@ Cloner le repository git sur votre machine
 
 ```
     >> pip install --upgrade PackageName
+    OU
+    >> pip install pip-review
+    >> pip-review --local --auto
 ```
 - Lancer la migration de votre base de donnée
 
@@ -74,22 +76,19 @@ Demarrez React JS
 ```
 **En cas de besoin**
 
-###### Pour cree des fixtures
-```
-    >> python -Xutf8 manage.py dumpdata ahome --indent 4 > ahome/fixtures/file_name.json
-```
 ###### Supprimer les data de l'application ahome ...
 
 ```
-    >> ./manage.py sqlclear ahome | ./manage.py dbshell
+    >> py manage.py flunsh
 ```
-###### Maintenant, rechargez les appareils maintenant ...
+###### Maintenant, rechargez les données fixtures ...
 
 ```
-    >> ./manage.py syncdb
-ou
-    >> ./manage.py dumpdata qcm > qcm/fixtures/file_name.json
-``` ./manage.py sqlclear ahome | ./manage.py dbshell
+    >> py manage.py loaddata ahome > ahome/fixtures/file_name.json
+```
+###### INFO: Pour cree des fixtures
+```
+    >> py manage.py dumpdata ahome --indent 4 > ahome/fixtures/file_name.json
 ```
 ###### Optionnel ...
 

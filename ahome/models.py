@@ -1,8 +1,8 @@
 from datetime import datetime, timezone
-
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils import timezone
+import uuid,os
 PROPERTIES_STATUS_CHOISES = [
     ('for sale', 'for sale'),
     ('for rent', 'for rent'),
@@ -39,6 +39,11 @@ PROPERTIES_TYPE_CHOICES = [
     ('Mas de Provence', 'Mas de Provence'),
     ('Résidence séniors', 'Résidence séniors'),
 ]
+def get_file_path(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % (uuid.uuid4(), ext)
+    return os.path.join(instance.directory_string_var, filename)
+
 
 
 class Country(models.Model):
@@ -63,11 +68,12 @@ class City(models.Model):
     name = models.CharField(max_length=50, unique=True)
     description = models.TextField(max_length=300)
     photo = models.ImageField(
-        upload_to='city_photo',
+        upload_to=get_file_path,
         null=True,
         validators=[FileExtensionValidator(allowed_extensions=['jpg', 'png', 'gif'])]
     )
-
+    directory_string_var='city_photo'
+    
     def __str__(self):
         return self.name
 
@@ -96,10 +102,11 @@ class Propertie(models.Model):
     fridge = models.BooleanField(default=False)
     featured = models.BooleanField(default=False)
     video = models.FileField(
-        upload_to='videos_uploaded',
+        upload_to=get_file_path,
         null=True,
         validators=[FileExtensionValidator(allowed_extensions=['MOV', 'avi', 'mp4', 'webm', 'mkv'])]
     )
+    directory_string_var='videos_uploaded'
     localisation = models.CharField(max_length=150, null=False, blank=False)
     created_at = models.DateTimeField(editable=False)
     modified_at = models.DateTimeField()
@@ -128,15 +135,17 @@ class Propertie(models.Model):
 
 class ImageProperty(models.Model):
     property = models.ForeignKey(Propertie, related_name="imageProperties", on_delete=models.CASCADE)
-    img = models.ImageField(upload_to="propertyImg")
-
+    img = models.ImageField(upload_to=get_file_path)
+    directory_string_var="propertyImg"
     def __str__(self):
         return self.img
-
+    
 class PlanProperty(models.Model):
     property = models.ForeignKey(Propertie, related_name="planProperties", on_delete=models.CASCADE)
-    plan = models.ImageField(upload_to="propertyPlan")
+    plan = models.ImageField(upload_to=get_file_path)
+    directory_string_var="propertyPlan"
     floorNum = models.IntegerField()
-
+    
+    
     class Meta:
         unique_together = ("property", "floorNum")
