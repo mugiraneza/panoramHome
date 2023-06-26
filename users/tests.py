@@ -90,3 +90,29 @@ class CustomUserViewTests(TestCase):
             "last_name": "last_name"
         })
         self.assertEqual(response.status_code, 409)
+
+    def test_custom_user_login(self):
+        # cree un compte
+        response = self.client.post("/api/user/register", {
+            "user_name": "john",
+            "password": "azerty123456",
+            "email": "spam@mugiraneza.com",
+            "first_name": "first_name",
+            "last_name": "last_name"
+        })
+        self.assertEqual(response.status_code, 201)
+        # ensuite on essaie de se connecté
+        response = self.client.post("/api/token", {
+            "password": "azerty123456",
+            "email": "spam@mugiraneza.com"
+        })
+        self.assertEqual(response.status_code, 200)
+        jwt = response.data["access"]
+
+    # def test_custom_user_logout(self):
+    #     # deconnexion
+    #
+    #     response = self.client.post("/api/token", {
+    #         "Authorization": "JWT "+self.jwt
+    #     })
+    #     self.assertEqual(response.status_code, 200)

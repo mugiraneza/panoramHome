@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from users.models import NewUser
+from users.utility import send_mail_after_registration
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
@@ -21,5 +22,6 @@ class CustomUserSerializer(serializers.ModelSerializer):
         instance = self.Meta.model(**validated_data)
         if password is not None:
             instance.set_password(password)
+        send_mail_after_registration(instance.email, instance.user_name, instance.act_token)
         instance.save()
         return instance

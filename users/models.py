@@ -1,23 +1,15 @@
-import re
+import uuid
+
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-from email_validator import validate_email, EmailNotValidError
+from email_validator import validate_email
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
-regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-
-
-def check(email):
-    # pass the regular expression
-    # and the string into the fullmatch() method
-    if re.fullmatch(regex, email):
-        return True
-    else:
-        return False
-
-
 # Create your models here.
+from users.utility import custom_mail_check, send_mail_after_registration
+
+
 class CustomAccountManager(BaseUserManager):
     def create_superuser(self, email, user_name, first_name, last_name, password, **other_fields):
         other_fields.setdefault('is_staff', True)
@@ -32,7 +24,7 @@ class CustomAccountManager(BaseUserManager):
     def create_user(self, email, user_name, first_name, last_name, password, **other_fields):
         if not email:
             raise ValueError('You must provide an email address')
-        elif not check(email):
+        elif not custom_mail_check(email):
             raise ValueError('Email address must be a valid to process')
 
         valid = validate_email(email)
@@ -41,6 +33,7 @@ class CustomAccountManager(BaseUserManager):
                           password=password, **other_fields)
         user.set_password(password)
         user.save()
+        send_mail_after_registration(user.email, user.user_name, user.act_token)
         return user
 
 
@@ -53,8 +46,10 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=150, blank=True)
     start_date = models.DateTimeField(default=timezone.now)
     about = models.TextField(_('about'), max_length=500, blank=True)
+    act_token = models.TextField(_('act_token'), max_length=500, default=str(uuid.uuid4()))
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    is_verified = models.BooleanField(default=False)
     objects = CustomAccountManager()
 
     def __str__(self):

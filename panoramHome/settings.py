@@ -15,7 +15,10 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from corsheaders.defaults import default_headers
-
+API_KEY = os.environ['MJ_APIKEY_PUBLIC']
+API_SECRET = os.environ['MJ_APIKEY_PRIVATE']
+NO_REPLY_MAIL = "no-reply@mugiraneza.com"
+CUSTOM_APP_NAME = "Panorama Home"
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production

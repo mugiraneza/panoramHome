@@ -133,7 +133,7 @@ class PlanPropertySet(views.APIView):
     def post(self, request, **kwargs):
         serialized_data = PlanSerializer(data=request.data)
         if not serialized_data.is_valid():
-            return Respdonse(serialized_data.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(serialized_data.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
             serialized_data.save()
             return Response(serialized_data.data, status=status.HTTP_200_OK)
