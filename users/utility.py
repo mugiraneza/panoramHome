@@ -16,6 +16,8 @@ def custom_mail_check(email):
 
 
 def send_mail_after_registration(email, user_name, token):
+    print("#")
+    print(str(token))
     mailjet = Client(auth=(API_KEY, API_SECRET), version='v3.1')
     mail_body = {
         'Messages': [

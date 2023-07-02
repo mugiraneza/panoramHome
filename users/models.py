@@ -33,7 +33,7 @@ class CustomAccountManager(BaseUserManager):
                           password=password, **other_fields)
         user.set_password(password)
         user.save()
-        send_mail_after_registration(user.email, user.user_name, user.act_token)
+        send_mail_after_registration(user.email, user.user_name, str(user.act_token))
         return user
 
 
@@ -46,10 +46,9 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=150, blank=True)
     start_date = models.DateTimeField(default=timezone.now)
     about = models.TextField(_('about'), max_length=500, blank=True)
-    act_token = models.TextField(_('act_token'), max_length=500, default=str(uuid.uuid4()))
+    act_token = models.UUIDField(default=uuid.uuid4, editable=False)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    is_verified = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
     objects = CustomAccountManager()
 
     def __str__(self):

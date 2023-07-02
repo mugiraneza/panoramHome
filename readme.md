@@ -79,7 +79,7 @@ Demarrez React JS
 ###### Supprimer les data de l'application ahome ...
 
 ```
-    >> py manage.py flunsh
+    >> py manage.py flush
 ```
 ###### Maintenant, rechargez les données fixtures ...
 

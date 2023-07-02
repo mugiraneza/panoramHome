@@ -13,7 +13,7 @@ from django.db import IntegrityError
 class CustomUserCreate(APIView):
     permission_classes = [AllowAny]
 
-    def post(self, request, format='json'):
+    def post(self, request):
         serializer = CustomUserSerializer(data=request.data)
         if serializer.is_valid():
             try:
@@ -29,7 +29,7 @@ class CustomUserCreate(APIView):
 class LogoutView(APIView):
     permission_classes = (IsAuthenticated,)
 
-    def post(self, request, format='json'):
+    def post(self, request):
         try:
             refresh_token = request.data["refresh_token"]
             token = RefreshToken(refresh_token)
@@ -41,14 +41,15 @@ class LogoutView(APIView):
 
 class VerifiedMailView(APIView):
     permission_classes = [AllowAny]
-    def post(self, request, act_token, format='json'):
+
+    def post(self, request, act_token):
         try:
             profile_obj = NewUser.objects.filter(act_token=act_token).first()
 
             if profile_obj:
-                if profile_obj.is_verified:
+                if profile_obj.is_active:
                     return Response({'Your account is already verified...'}, status=status.HTTP_400_BAD_REQUEST)
-                profile_obj.is_verified = True
+                profile_obj.is_active = True
                 profile_obj.save()
                 return Response({'Your account has been verified.'}, status=status.HTTP_200_OK)
             else:
