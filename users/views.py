@@ -22,7 +22,7 @@ class CustomUserCreate(APIView):
                     json = serializer.data
                     return Response(json, status=status.HTTP_201_CREATED)
             except IntegrityError:
-                return Response({"email ou nom d'utilisateur deja utilisé"}, status=status.HTTP_409_CONFLICT)
+                return Response({"email ou nom d'utilisateur déja utilisé"}, status=status.HTTP_409_CONFLICT)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -36,7 +36,7 @@ class LogoutView(APIView):
             token.blacklist()
             return Response(status=status.HTTP_205_RESET_CONTENT)
         except Exception:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response({"vous êtes maintenant déconnecté"},status=status.HTTP_400_BAD_REQUEST)
 
 
 class VerifiedMailView(APIView):
@@ -48,11 +48,11 @@ class VerifiedMailView(APIView):
 
             if profile_obj:
                 if profile_obj.is_active:
-                    return Response({'Your account is already verified...'}, status=status.HTTP_400_BAD_REQUEST)
-                profile_obj.is_active = True
+                    return Response({'Votre compte est déjà vérifié...'}, status=status.HTTP_400_BAD_REQUEST)
+                profile_obj.enable_user()
                 profile_obj.save()
-                return Response({'Your account has been verified.'}, status=status.HTTP_200_OK)
+                return Response({'Votre compte a été vérifié.'}, status=status.HTTP_200_OK)
             else:
-                return Response({'Error...'}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({'Erreur...'}, status=status.HTTP_400_BAD_REQUEST)
         except Exception:
-            return Response({'Error...'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'Erreur...'}, status=status.HTTP_400_BAD_REQUEST)

@@ -14,10 +14,10 @@ Cloner le repository git sur votre machine
 
 ```
     >> pip install pipenv
-    
-    OU
-    
     >> py -m venv venv
+	# Mac/Linux
+	>>source ./venv/bin/activate
+	# Windows
     >> venv\Scripts\activate
     
     OU en cas d erreur
@@ -54,6 +54,12 @@ Cloner le repository git sur votre machine
 
 ```
     >> python manage.py runserver
+```
+
+- Explorer la base de données avec django(ptpython needed)
+
+```
+    >> py manage.py shell_plus --ptpython
 ```
     
 ###### _React Js_ :
@@ -97,6 +103,59 @@ Demarrez React JS
 ```
 
 ## API References
+
+
+#### Register new user
+
+```http
+   POST /api/user/register
+```
+  
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `email     ` | `string` | `**Required**.  user email    ` |
+| `user_name ` | `string` | `**Required**. user name      ` |
+| `first_name` | `string` | `**Required**. user first name` |
+| `last_name ` | `string` | `**Required**. user last name ` |
+| `password  ` | `string` | `**Required**. user password  ` |
+
+
+
+
+#### Verify email
+
+```http
+   POST /api/user/verify/<act_token>
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `act_token` | `uuid` | `**Required**` |
+
+#### Login 
+
+```http
+   POST /api/user/token
+```
+  
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `email   ` | `string` | `user email   ` |
+| `password` | `string` | `user password` |
+  
+| Result | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `access_token ` | `string` | `authentification access token` |
+| `refresh_token` | `string` | `refresh access token         ` |
+
+
+#### Logout
+
+```http
+   POST /api/user/logout
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `refresh_token` | `string` | `Must be authentificate and provide refresh token` |
 
 #### Get all Country
 

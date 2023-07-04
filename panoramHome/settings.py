@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_extensions',
+    'django.contrib.gis',
     'rest_framework_simplejwt.token_blacklist',
     # Local app
     'ahome',

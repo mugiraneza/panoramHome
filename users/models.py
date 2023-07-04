@@ -46,10 +46,16 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=150, blank=True)
     start_date = models.DateTimeField(default=timezone.now)
     about = models.TextField(_('about'), max_length=500, blank=True)
-    act_token = models.UUIDField(default=uuid.uuid4, editable=False)
+    act_token = models.UUIDField(default=uuid.uuid4,null=True,unique=True, blank=True, editable=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
     objects = CustomAccountManager()
 
     def __str__(self):
         return self.user_name
+            
+    def disable_user(self):
+        self.is_active=False
+        
+    def enable_user(self):
+        self.is_active=True
