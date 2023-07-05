@@ -89,7 +89,7 @@ class Propertie(models.Model):
     garage = models.IntegerField(default=0)
     cost = models.IntegerField(default=0)
     room = models.IntegerField(default=0)
-    type = models.CharField(default="Maison", max_length=250, choices=PROPERTIES_TYPE_CHOICES)
+    type_bien = models.CharField(default="Maison", max_length=250, choices=PROPERTIES_TYPE_CHOICES)
     status = models.CharField(default="for sale", max_length=250, choices=PROPERTIES_STATUS_CHOISES)
     airCond = models.BooleanField(default=False)
     balcony = models.BooleanField(default=False)
@@ -115,6 +115,7 @@ class Propertie(models.Model):
         null=True,
         validators=[FileExtensionValidator(allowed_extensions=['jpeg', 'jpg', 'png', 'gif'])]
     )
+    is_published = models.BooleanField(default=True)
 
     @property
     def create_since(self):
@@ -128,6 +129,9 @@ class Propertie(models.Model):
             self.created_at = timezone.now()
         self.modified_at = timezone.now()
         return super(Propertie, self).save(*args, **kwargs)
+
+    def disable_enable_publication(self):
+        self.is_published = not self.is_published
 
     def __str__(self):
         return self.name
