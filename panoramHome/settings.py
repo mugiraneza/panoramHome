@@ -15,11 +15,19 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from corsheaders.defaults import default_headers
+
 API_KEY = os.environ['MJ_APIKEY_PUBLIC']
 API_SECRET = os.environ['MJ_APIKEY_PRIVATE']
 NO_REPLY_MAIL = "no-reply@mugiraneza.com"
 CUSTOM_APP_NAME = "Panorama Home"
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+if os.name == 'nt':
+    VENV_BASE = os.environ['VIRTUAL_ENV']
+    os.environ['PATH'] = os.path.join(VENV_BASE, 'Lib\\site-packages\\osgeo') + ';' + os.environ['PATH']
+    os.environ['PROJ_LIB'] = os.path.join(VENV_BASE, 'Lib\\site-packages\\osgeo\\data\\proj') + ';' + os.environ['PATH']
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -70,7 +78,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_extensions',
-    # 'django.contrib.gis',
+    'django.contrib.gis',
     'rest_framework_simplejwt.token_blacklist',
     # Local app
     'ahome',
@@ -88,7 +96,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # CORS
     'corsheaders.middleware.CorsMiddleware',
-    
+
 ]
 ROOT_URLCONF = 'panoramHome.urls'
 TEMPLATES = [
@@ -125,12 +133,23 @@ REST_FRAMEWORK = {
     }
 }
 WSGI_APPLICATION = 'panoramHome.wsgi.application'
-# Database
+# SQL Lite Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+# switch to  postgre
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'db_panorama',
+        'USER': 'dev',
+        'PASSWORD': 'Bonjour.123546',
+        # 'HOST':'localhost',
+        # 'PORT':'5432',
     }
 }
 
