@@ -7,4 +7,5 @@
 /venv/
 /htmlcov/
 /.coverage
+/.env
 /htmlcov

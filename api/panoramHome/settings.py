@@ -12,16 +12,14 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from datetime import timedelta
 from pathlib import Path
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from corsheaders.defaults import default_headers
 
-API_KEY = os.environ['MJ_APIKEY_PUBLIC']
-API_SECRET = os.environ['MJ_APIKEY_PRIVATE']
+API_KEY =  os.environ['MJ_APIKEY_PUBLIC']
+API_SECRET =  os.environ['MJ_APIKEY_PRIVATE']
 NO_REPLY_MAIL = "no-reply@mugiraneza.com"
 CUSTOM_APP_NAME = "Panorama Home"
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 if os.name == 'nt':
     VENV_BASE = os.environ['VIRTUAL_ENV']
@@ -33,7 +31,7 @@ if os.name == 'nt':
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$zvxnboi$0_bacl0#dcz77n=!wk7rsdyqckvx@hpv^t#3d5d62'
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -145,11 +143,11 @@ WSGI_APPLICATION = 'panoramHome.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'db_panorama',
-        'USER': 'dev',
-        'PASSWORD': 'Bonjour.123546',
-        # 'HOST':'localhost',
-        # 'PORT':'5432',
+        "NAME": os.environ["POSTGRES_DBNAME"],
+        "USER": os.environ["POSTGRES_USER"],
+        "PASSWORD": os.environ["POSTGRES_PASS"],
+        "HOST": os.environ["PG_HOST"],
+        "PORT": os.environ["PG_PORT"],
     }
 }
 

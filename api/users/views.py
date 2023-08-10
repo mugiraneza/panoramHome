@@ -9,6 +9,8 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.db import IntegrityError
 
+from .utility import get_client_ip
+
 
 class CustomUserCreate(APIView):
     permission_classes = [AllowAny]
@@ -26,6 +28,12 @@ class CustomUserCreate(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class InspectUserView(APIView):
+    def get(self, request, *args, **kwargs):
+        context = get_client_ip(request)
+
+
+
 class LogoutView(APIView):
     permission_classes = (IsAuthenticated,)
 
@@ -36,7 +44,7 @@ class LogoutView(APIView):
             token.blacklist()
             return Response(status=status.HTTP_205_RESET_CONTENT)
         except Exception:
-            return Response({"vous êtes maintenant déconnecté"},status=status.HTTP_400_BAD_REQUEST)
+            return Response({"vous êtes maintenant déconnecté"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class VerifiedMailView(APIView):

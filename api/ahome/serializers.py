@@ -1,8 +1,6 @@
-from abc import ABC
 from datetime import datetime, timezone
 from email.mime import image
 
-import plan as plan
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 

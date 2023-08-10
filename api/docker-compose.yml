@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  api:
+    container_name: api-container
+    build: .
+    restart: always
+    command:
+      sh -c " yes |python manage.py makemigrations &&
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+  db:
+    container_name: postgres-container
+    image: kartoza/postgis:15-3.3
+    environment:
+      - POSTGRES_DB=${POSTGRES_DBNAME}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASS}
+    ports:
+      - "5432:5432"
