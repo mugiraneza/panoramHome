@@ -2,7 +2,7 @@ version: '3.9'
 services:
   api:
     container_name: api-container
-    build: .
+    build: ./api
     restart: always
     command:
       sh -c " yes |python manage.py makemigrations &&
@@ -12,8 +12,8 @@ services:
       - .env
     ports:
       - "8000:8000"
-    volumes:
-      - .:/code
+#    volumes:
+#      - .:/code
     depends_on:
       - db
   db:
@@ -25,3 +25,14 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASS}
     ports:
       - "5432:5432"
+  frontend:
+    container_name: node-container
+    build: frontend
+    command: [ "npm", "start" ]
+#    volumes:
+#      - .:/frontend
+    depends_on:
+      - db
+      - api
+    ports:
+      - "3000:3000"

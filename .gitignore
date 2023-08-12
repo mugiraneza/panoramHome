@@ -1,0 +1,11 @@
+/db.sqlite3
+/.idea
+/media/city_photo/
+/media/property_photo/
+/media/propertyImg/
+/media/propertyPlan/
+/venv/
+/htmlcov/
+/.coverage
+/.env
+/htmlcov

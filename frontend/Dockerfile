@@ -1,5 +1,5 @@
 FROM node:13.12.0-alpine
-
+RUN mkdir /frontend
 WORKDIR /app
 
 ENV PATH /app/node_modules/ .bin:$PATH
@@ -12,5 +12,7 @@ RUN npm install react-scripts@3.4.1 -g --silent
 RUN npm install axios classnames --save
 
 COPY . ./
+
+EXPOSE 3000
 
 CMD ["npm", "start"]

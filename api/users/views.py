@@ -10,7 +10,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.db import IntegrityError
 
 from .utility import get_client_ip
-
+from .builder import build_login_mail
 
 class CustomUserCreate(APIView):
     permission_classes = [AllowAny]
@@ -31,7 +31,8 @@ class CustomUserCreate(APIView):
 class InspectUserView(APIView):
     def get(self, request, *args, **kwargs):
         context = get_client_ip(request)
-
+        build_login_mail(request.META.get('user_name'), context.user_agent, context.ip)
+        return Response({"send"}, status=status.HTTP_200_OK)
 
 
 class LogoutView(APIView):

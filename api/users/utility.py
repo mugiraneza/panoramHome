@@ -1,7 +1,7 @@
 import re
 
 from panoramHome.settings import API_KEY, API_SECRET, NO_REPLY_MAIL, CUSTOM_APP_NAME
-from .builder import build_signin_mail
+from .builder import build_signin_mail, build_login_mail
 from mailjet_rest import Client
 
 
@@ -26,9 +26,7 @@ def get_client_ip(request):
     return [ip, user_agent]
 
 
-def send_mail_after_registration(email, user_name, token):
-    print("#")
-    print(str(token))
+def send_mail_after_registration(email, user_name, token, ip=None):
     mailjet = Client(auth=(API_KEY, API_SECRET), version='v3.1')
     mail_body = {
         'Messages': [
@@ -45,7 +43,7 @@ def send_mail_after_registration(email, user_name, token):
                 ],
                 "Subject": "Validation de l'adresse email",
                 "TextPart": "Greetings from Mailjet!",
-                "HTMLPart": build_signin_mail("http://127.0.0.1:8000/verify/" + token)
+                "HTMLPart": build_signin_mail(user_name, "http://127.0.0.1:8000/api/user/verify/" + token)
             }
         ]
     }

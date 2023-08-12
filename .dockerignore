@@ -24,6 +24,8 @@ venv
 .pydevproject
 .idea/
 .vscode/
+/.env
+.env
 
 # Extra to avoid docker build cache busting:
 .git/
