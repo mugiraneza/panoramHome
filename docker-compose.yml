@@ -27,7 +27,7 @@ services:
       - "5432:5432"
   frontend:
     container_name: node-container
-    build: frontend
+    build: ./frontend
     command: [ "npm", "start" ]
 #    volumes:
 #      - .:/frontend
