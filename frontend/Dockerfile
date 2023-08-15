@@ -4,14 +4,14 @@ WORKDIR /frontend
 
 ENV PATH /frontend/node_modules/ .bin:$PATH
 
-COPY package.json ./
-COPY package-lock.json ./
+COPY package.json /frontend/
+COPY package-lock.json /frontend/
 
 RUN npm install --silent
 RUN npm install react-scripts@3.4.1 -g --silent
 RUN npm install axios classnames --save
 
-COPY . ./
+COPY ../front ./
 
 EXPOSE 3000
 

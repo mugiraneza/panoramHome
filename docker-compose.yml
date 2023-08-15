@@ -27,7 +27,8 @@ services:
       - "5432:5432"
   frontend:
     container_name: node-container
-    build: ./frontend
+    restart: always
+    build: front
     command: [ "npm", "start" ]
 #    volumes:
 #      - .:/frontend
@@ -36,3 +37,5 @@ services:
       - api
     ports:
       - "3000:3000"
+    stdin_open: true
+    tty: true
